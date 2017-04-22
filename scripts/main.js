@@ -3,11 +3,21 @@ var genesis = (function() {
   var body = document.getElementsByTagName('body')[0];
   var socialMediaIcons = document.getElementsByClassName('main-container-social-links-list-item');
 
-  var colorRandomizer = function() {
-    var randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    body.style.background = `#${randomColor}`;
+  function randomizeInput(limit) {
+    return Math.floor(Math.random() * limit);
+  }
+
+  function colorRandomizer() {
+    var rgba = {
+      red: randomizeInput(255),
+      green: randomizeInput(255),
+      blue: randomizeInput(255),
+      alpha: Math.random() * 1
+    }
+
+    body.style.background = `rgba(${rgba.red}, ${rgba.green}, ${rgba.blue}, ${rgba.alpha})`;
     body.style.transition = '3.5s';
-    loopSocialMedia(`#${randomColor}`);
+    loopSocialMedia(`rgba(${rgba.red}, ${rgba.green}, ${rgba.blue}, ${rgba.alpha})`);
   };
 
   function loopSocialMedia(color) {
@@ -17,7 +27,7 @@ var genesis = (function() {
     }
   }
 
-  var secondIntervals = setInterval(colorRandomizer, 1250);
+  var secondIntervals = setInterval(colorRandomizer, 1500);
 
   body.onclick = function(event) {
     clickCounter = clickCounter + 1;
@@ -25,7 +35,7 @@ var genesis = (function() {
       clearInterval(secondIntervals);
       loopSocialMedia('white');
     } else {
-      secondIntervals = setInterval(colorRandomizer, 1000);
+      secondIntervals = setInterval(colorRandomizer, 1500);
     }
   };
 });
