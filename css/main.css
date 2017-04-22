@@ -9,6 +9,7 @@ html {
 body {
   height: 100%;
   margin: 0;
+  color: white;
 }
 
 body {
@@ -35,15 +36,15 @@ ul {
 }
 
 a {
-  color: rgb(0, 140, 186);
+  color: white;
 }
 
 a:visited {
-  color: rgb(0, 140, 186);
+  color: white;
 }
 
 a:hover {
-  transition: .5s;
+  transition: .5s !important;
 }
 
 
@@ -97,13 +98,13 @@ a:hover {
 }
 
 .main-container-social-links-list-item.octocat:hover {
-  color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0) !important;
 }
 
 .main-container-social-links-list-item.twitter:hover {
-  color: rgb(29, 161, 242);
+  color: rgb(29, 161, 242) !important;
 }
 
 .main-container-social-links-list-item.linkedin:hover {
-  color: rgb(0, 119, 181);
+  color: rgb(0, 119, 181) !important;
 }
