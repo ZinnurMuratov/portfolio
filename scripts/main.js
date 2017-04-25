@@ -1,4 +1,4 @@
-var genesis = (function() {
+onload = (function() {
   var clickCounter = 0;
   var body = document.getElementsByTagName('body')[0];
   var socialMediaIcons = document.getElementsByClassName('main-container-social-links-list-item');
@@ -38,6 +38,4 @@ var genesis = (function() {
       secondIntervals = setInterval(colorRandomizer, 1500);
     }
   };
-});
-
-onload = genesis();
+})();
