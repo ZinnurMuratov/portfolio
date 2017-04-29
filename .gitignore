@@ -1,1 +1,9 @@
+*server/**/*.js
+*client/**/*.js
+
+*node_modules
+*.dev
+*.dist
+
 *.DS_Store
+*yarn.lock
