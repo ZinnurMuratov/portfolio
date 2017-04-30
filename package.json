@@ -22,16 +22,16 @@
   },
   "homepage": "https://github.com/dannyk08/portfolio#readme",
   "dependencies": {
-    "@angular/compiler": "^4.1.0",
-    "@angular/core": "^4.1.0",
-    "ejs": "^2.5.6",
+    "@angular/compiler": "4.1.0",
+    "@angular/core": "4.1.0",
+    "ejs": "2.5.6",
     "express": "4.15.2",
-    "rxjs": "^5.3.0"
+    "rxjs": "5.3.0"
   },
   "devDependencies": {
     "@types/express": "4.0.35",
     "@types/node": "7.0.14",
-    "codelyzer": "^3.0.1",
+    "codelyzer": "3.0.1",
     "del": "2.2.2",
     "eslint": "3.19.0",
     "eslint-config-google": "0.7.1",
@@ -39,15 +39,18 @@
     "eslint-plugin-promise": "3.5.0",
     "eslint-plugin-standard": "3.0.1",
     "gulp": "3.9.1",
+    "gulp-autoprefixer": "3.1.1",
+    "gulp-cssmin": "0.1.7",
     "gulp-eslint": "3.0.1",
     "gulp-if": "2.0.2",
     "gulp-nodemon": "2.2.1",
+    "gulp-sass": "3.1.0",
     "gulp-tslint": "8.0.0",
     "gulp-typescript": "3.1.6",
     "gulp-watch": "4.3.11",
     "require-dir": "0.3.1",
     "run-sequence": "1.2.2",
-    "tslint": "^5.1.0",
+    "tslint": "5.1.0",
     "typescript": "2.3.2"
   }
 }

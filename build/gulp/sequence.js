@@ -5,7 +5,11 @@ const sequence = require('run-sequence');
 gulp.task('run', (callback) => {
   sequence(
     'dev:del',
-    'lint', ['dev:nodemon', 'dev:copy'],
+    'lint', [
+      'dev:nodemon',
+      'dev:copy',
+      'dev:styles'
+    ],
     'dev:watch',
     callback
   );

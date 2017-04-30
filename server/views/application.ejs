@@ -6,13 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Danny's IO | Web Developer Porfolio</title>
-  <%#
-  // <link rel="stylesheet" type="" href="css/normalize.css">
-  // <link rel="stylesheet" type="" href="css/main.css">
-  // <link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
-  // <link href="https://fonts.googleapis.com/css?family=Nova+Mono" rel="stylesheet">
-  // <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  %>
+  <link rel="stylesheet" type="" href="assets/styles/normalize.css">
+  <link rel="stylesheet" type="" href="assets/styles/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nova+Mono" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -51,9 +49,49 @@
     </section>
   </main>
 
-  <%#
-  // <script type="text/javascript" src="scripts/main.js"></script>
-  %>
+  <script>
+    onload = (function() {
+      var clickCounter = 0;
+      var body = document.getElementsByTagName('body')[0];
+      var socialMediaIcons = document.getElementsByClassName('main-container-social-links-list-item');
+
+      function randomizeInput(limit) {
+        return Math.floor(Math.random() * limit);
+      }
+
+      function colorRandomizer() {
+        var rgba = {
+          red: randomizeInput(255),
+          green: randomizeInput(255),
+          blue: randomizeInput(255),
+          alpha: Math.random() * 1
+        }
+
+        body.style.background = `rgba(${rgba.red}, ${rgba.green}, ${rgba.blue}, ${rgba.alpha})`;
+        body.style.transition = '3.5s';
+        loopSocialMedia(`rgba(${rgba.red}, ${rgba.green}, ${rgba.blue}, ${rgba.alpha})`);
+      };
+
+      function loopSocialMedia(color) {
+        for (var index = 0; index < socialMediaIcons.length; index++) {
+          socialMediaIcons[index].style.color = color
+          socialMediaIcons[index].style.transition = '2s';
+        }
+      }
+
+      var secondIntervals = setInterval(colorRandomizer, 1500);
+
+      body.onclick = function(event) {
+        clickCounter = clickCounter + 1;
+        if (clickCounter % 2 !== 0) {
+          clearInterval(secondIntervals);
+          loopSocialMedia('white');
+        } else {
+          secondIntervals = setInterval(colorRandomizer, 1500);
+        }
+      };
+    })();
+  </script>
 </body>
 
 </html>
