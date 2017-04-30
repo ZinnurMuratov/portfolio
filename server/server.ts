@@ -1,11 +1,13 @@
 import * as express from 'express';
 
-const app = express();
+import { startExpress } from './config/express';
 
-app.get('/', (req: express.Request, res: express.Response, next: express.NextFunction) => {
-  return res.json({ success: true });
-})
+const APP = express();
+const PORT = process.env.PORT ||  3000;
+const ENV  = process.env.NODE_ENV || 'development';
 
-app.listen(3000, () => {
-  console.log('looking for revenge');
+startExpress(APP);
+
+APP.listen(PORT, () => {
+  console.log(`looking for revenge, @port: ${PORT}, @ENV: ${ENV}`);
 });
