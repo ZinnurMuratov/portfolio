@@ -1,6 +1,7 @@
 'user strict';
 const gulp = require('gulp');
 const spawn = require('child_process').spawn;
+const colors = require('colors/safe');
 
 gulp.task('dev:watch:server', () => {
   gulp.watch('server/**/*.ts', ['dev:typescript:server']);
@@ -29,13 +30,13 @@ gulp.task('dev:watch:css', () => {
 gulp.task('dev:watch:webpack', (callback) => {
   let webpackWatch = spawn('webpack', ['--watch']);
   webpackWatch.stdout.on('data', (data) => {
-    console.info(`stdout: ${data}`);
+    console.info(colors.cyan(`@spawn.stdout: ${data}`));
   });
   webpackWatch.stderr.on('data', (data) => {
-    console.info(`stderr: ${data}`);
+    console.info(colors.red(`@spawn.stderr: ${data}`));
   });
   webpackWatch.on('close', (close) => {
-    console.info(`exit: ${close}`);
+    console.info(colors.yellow(`@spawn.exit: ${close}`));
   });
 });
 
