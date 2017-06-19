@@ -1,4 +1,4 @@
-import { Application, static as ExpressStatic, Request, Response } from 'express';
+import { Application, Request, Response, static as ExpressStatic } from 'express';
 import { join, resolve } from 'path';
 
 import { IndexRouter } from './routes/index';

@@ -1,5 +1,6 @@
 'user strict';
 const gulp = require('gulp');
+const spawn = require('child_process').spawn;
 
 gulp.task('dev:watch:server', () => {
   gulp.watch('server/**/*.ts', ['dev:typescript:server']);
@@ -25,8 +26,17 @@ gulp.task('dev:watch:css', () => {
   gulp.watch('.dev/client/assets/styles/**/*.css', ['dev:css:prefix']);
 });
 
-gulp.task('dev:watch:webpack', () => {
-  gulp.watch(['./client/main.ts', './client/app'], ['dev:webpack']);
+gulp.task('dev:watch:webpack', (callback) => {
+  let webpackWatch = spawn('webpack', ['--watch']);
+  webpackWatch.stdout.on('data', (data) => {
+    console.info(`stdout: ${data}`);
+  });
+  webpackWatch.stderr.on('data', (data) => {
+    console.info(`stderr: ${data}`);
+  });
+  webpackWatch.on('close', (close) => {
+    console.info(`exit: ${close}`);
+  });
 });
 
 gulp.task('dev:watch', [

@@ -1,12 +1,11 @@
 'use strict';
-
 const gulp = require('gulp');
-const path = require('path');
-const webpack = require('gulp-webpack');
-const webpackConfig = require( path.join(__dirname, './../../webpack.config.js') );
+const exec = require('child_process').exec;
 
-gulp.task('dev:webpack', () => {
-  return gulp.src('./client/main.ts')
-    .pipe(webpack(webpackConfig))
-    .pipe(gulp.dest('.dev/client'));
+gulp.task('dev:webpack', (callback) => {
+  return exec('webpack', (err, stdout, stderr) => {
+    console.info(stdout);
+    console.error(stderr);
+    callback(err);
+  });
 });
