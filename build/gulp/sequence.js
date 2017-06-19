@@ -10,6 +10,7 @@ gulp.task('run', (callback) => {
       'dev:copy',
       'dev:styles'
     ],
+    'dev:webpack',
     'dev:watch',
     callback
   );

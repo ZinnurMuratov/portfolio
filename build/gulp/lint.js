@@ -32,4 +32,16 @@ gulp.task('tslint:server', () => {
     }));
 });
 
-gulp.task('lint', ['eslint:build', 'tslint:server']);
+gulp.task('tslint:client', () => {
+  return gulp.src(['client/**/*.ts'])
+    .pipe(tslint({
+      configuration: 'tslint.json',
+      formatter: 'verbose',
+      fix: true
+    }))
+    .pipe(tslint.report({
+      emitError: false
+    }));
+});
+
+gulp.task('lint', ['eslint:build', 'tslint:client', 'tslint:server']);
