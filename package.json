@@ -58,9 +58,11 @@
     "raw-loader": "0.5.1",
     "require-dir": "0.3.2",
     "run-sequence": "1.2.2",
+    "ts-loader": "2.3.0",
     "tslint": "5.4.3",
     "tslint-loader": "3.5.3",
     "typescript": "2.3.4",
+    "vue-loader": "12.2.2",
     "webpack": "2.6.1"
   }
 }

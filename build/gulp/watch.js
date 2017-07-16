@@ -27,18 +27,6 @@ gulp.task('dev:watch:css', () => {
   gulp.watch('.dev/client/assets/styles/**/*.css', ['dev:css:prefix']);
 });
 
-gulp.task('dev:watch:webpack', (callback) => {
-  let webpackWatch = spawn('webpack', ['--watch']);
-  webpackWatch.stdout.on('data', (data) => {
-    console.info(colors.cyan(`@spawn.stdout: ${data}`));
-  });
-  webpackWatch.stderr.on('data', (data) => {
-    console.info(colors.red(`@spawn.stderr: ${data}`));
-  });
-  webpackWatch.on('close', (close) => {
-    console.info(colors.yellow(`@spawn.exit: ${close}`));
-  });
-});
 
 gulp.task('dev:watch', [
   'dev:watch:server:lint',
@@ -46,5 +34,4 @@ gulp.task('dev:watch', [
   'dev:watch:views',
   'dev:watch:sass',
   'dev:watch:css',
-  'dev:watch:webpack'
 ]);
