@@ -1,7 +1,5 @@
 'user strict';
 const gulp = require('gulp');
-const spawn = require('child_process').spawn;
-const colors = require('colors/safe');
 
 gulp.task('dev:watch:server', () => {
   gulp.watch('server/**/*.ts', ['dev:typescript:server']);
@@ -20,11 +18,15 @@ gulp.task('dev:watch:client:lint', () => {
 });
 
 gulp.task('dev:watch:sass', () => {
-  gulp.watch('client/assets/styles/**/*.scss', ['dev:sass']);
+  gulp.watch('client/main.scss', ['dev:sass']);
+});
+
+gulp.task('dev:watch:sass:injector', () => {
+  gulp.watch('client/components/**/*.scss', ['dev:inject:component:scss']);
 });
 
 gulp.task('dev:watch:css', () => {
-  gulp.watch('.dev/client/assets/styles/**/*.css', ['dev:css:prefix']);
+  gulp.watch('.dev/client/assets/styles/main.css', ['dev:css:prefix']);
 });
 
 
@@ -33,5 +35,6 @@ gulp.task('dev:watch', [
   'dev:watch:server',
   'dev:watch:views',
   'dev:watch:sass',
+  'dev:watch:sass:injector',
   'dev:watch:css',
 ]);

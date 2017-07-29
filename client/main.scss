@@ -1,0 +1,8 @@
+@import './assets/styles/normalize.scss';
+@import './assets/styles/misc.scss';
+
+// startinject
+@import 'components/core/footer/footer.component.scss';
+@import 'components/core/home/home.component.scss';
+@import 'components/core/nav/nav.component.scss';
+// endinject

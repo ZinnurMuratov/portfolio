@@ -10,7 +10,7 @@ export default Vue.extend({
   `,
   data() {
     return {
-      navText: 'issa nav',
+      navText: 'issa nav now',
     };
   },
 });

@@ -5,7 +5,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const cssmin = require('gulp-cssmin');
 
 gulp.task('dev:sass', () => {
-  gulp.src('client/assets/styles/*.scss')
+  gulp.src('client/main.scss')
     .pipe(
       sass().on('error', sass.logError)
     )
@@ -13,7 +13,7 @@ gulp.task('dev:sass', () => {
 });
 
 gulp.task('dev:css:prefix', () => {
-  gulp.src('.dev/css/styles/**/*.css')
+  gulp.src('.dev/css/styles/main.css')
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
