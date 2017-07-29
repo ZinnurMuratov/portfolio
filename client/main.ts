@@ -7,9 +7,9 @@ import router from './components/routes';
 const app = new Vue({
   el: '#main-app',
   template: `
-    <div>
+    <div class="app-main">
       <nav-component></nav-component>
-      <router-view></router-view>
+      <router-view class="app-content"></router-view>
       <footer-component></footer-component>
     </div>
   `,
