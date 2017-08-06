@@ -2,15 +2,18 @@ import Vue from 'vue';
 
 export default Vue.extend({
   template: `
-    <nav>
-      <header>
-        <h4>{{navText}}</h4>
-      </header>
+    <nav class="navigation">
+      <ul>
+        <li>
+          <a>Home</a>
+        </li>
+        <li>
+          <a>Portfolio</a>
+        </li>
+      </ul>
     </nav>
   `,
   data() {
-    return {
-      navText: 'issa nav',
-    };
+    return { };
   },
 });

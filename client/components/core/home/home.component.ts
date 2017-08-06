@@ -2,10 +2,13 @@ import Vue from 'vue';
 
 export default Vue.extend({
   template: `
-    <section>
-      <header>
-        <h1>{{enthusiasm}}</h1>
-      </header>
+    <section class="section-full">
+      <div class="vertical-align">
+        <header class="main-container-header">
+          <h1>Danny Romero</h1>
+          <h4>[Web Developer]</h4>
+        </header>
+      </div>
     </section>
   `,
   data() {
