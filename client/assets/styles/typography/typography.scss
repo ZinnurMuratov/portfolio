@@ -1,0 +1,47 @@
+@mixin h1-size {
+  font-size: 2.250rem;
+  line-height: 1.333;
+  letter-spacing: 0em;
+
+  @include grid-media($tablet-up) {
+    font-size: 2.4rem;
+    line-height: 1.333;
+    letter-spacing: 0em;
+  }
+}
+
+@mixin h2-size {
+  font-size: 1.5rem;
+  line-height: 1.333;
+  letter-spacing: 0em;
+
+  @include grid-media($tablet-up) {
+    font-size: 1.6rem;
+    line-height: 1.250;
+    letter-spacing: 0em;
+  }
+}
+
+@mixin h3-size {
+  font-size: 1.250rem;
+  line-height: 1.400;
+  letter-spacing: 0em;
+
+  @include grid-media($tablet-up) {
+    font-size: 1.2rem;
+    line-height: 1.333;
+    letter-spacing: 0em;
+  }
+}
+
+@mixin body-default {
+  font-size: 1rem;
+  line-height: 1.4;
+  letter-spacing: 0.063em;
+
+  @include grid-media($tablet-up) {
+    font-size: 1rem;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+  }
+}

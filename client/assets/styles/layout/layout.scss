@@ -1,0 +1,42 @@
+// helpers
+.vertical-align {
+  display: flex;
+  min-height: 100%;
+  min-width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.flat-list {
+  li {
+    display: inline-block;
+    height: 100%;
+    padding-right: 2rem;
+  }
+
+  &.right,
+  &.center {
+    li:last-of-type {
+      padding-right: 0;
+    }
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.right {
+    text-align: right;
+  }
+
+}
+
+.app-main {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+
+  .app-content {
+    flex: 1;
+  }
+}

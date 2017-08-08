@@ -3,16 +3,15 @@ import Vue from 'vue';
 export default Vue.extend({
   template: `
     <footer class="footer">
-      <header>
-        <h4>Connect</h4>
-      </header>
-      <ul>
-        <li v-for="link in socialLinks">
-          <a v-bind:href="link.url">
-            {{link.icon}}
-          </a>
-        </li>
-      </ul>
+      <section>
+        <ul class="flat-list center">
+          <li v-for="link in socialLinks">
+            <a v-bind:href="link.url">
+              {{link.icon}}
+            </a>
+          </li>
+        </ul>
+      </section>
     </footer>
   `,
   data() {

@@ -1,0 +1,12 @@
+$mobile-breakpoint: 700px !default; 
+$tablet-breakpoint: 992px !default;
+$desktop-breakpoint: 1200px !default;
+
+$tablet-up: (
+  media: $mobile-breakpoint
+);
+
+$desktop-up: (
+  media: $tablet-breakpoint
+);
+

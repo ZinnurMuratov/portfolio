@@ -18,7 +18,11 @@ gulp.task('dev:watch:client:lint', () => {
 });
 
 gulp.task('dev:watch:sass', () => {
-  gulp.watch('client/main.scss', ['dev:sass']);
+  gulp.watch([
+    'client/assets/styles/**/*.scss',
+    'client/components/**/*.scss',
+    'client/main.scss'
+  ], ['dev:sass']);
 });
 
 gulp.task('dev:watch:sass:injector', () => {
