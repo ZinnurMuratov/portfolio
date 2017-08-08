@@ -1,6 +1,7 @@
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
-export default Vue.extend({
+@Component({
   template: `
     <nav class="navigation">
       <ul class="flat-list right navigation-links">
@@ -12,8 +13,8 @@ export default Vue.extend({
         </li>
       </ul>
     </nav>
-  `,
-  data() {
-    return {};
-  },
-});
+  `
+})
+export class NavComponent extends Vue {
+  // 
+}

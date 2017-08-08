@@ -1,6 +1,7 @@
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
-export default Vue.extend({
+@Component({
   template: `
     <section class="section-full vertical-align">
       <header class="main-container-header">
@@ -9,9 +10,8 @@ export default Vue.extend({
       </header>
     </section>
   `,
-  data() {
-    return {
-      enthusiasm: 'shit works!',
-    };
-  },
-});
+})
+
+export class HomeComponent extends Vue {
+  // 
+}
