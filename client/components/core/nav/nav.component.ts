@@ -13,8 +13,8 @@ import Component from 'vue-class-component';
         </li>
       </ul>
     </nav>
-  `
+  `,
 })
 export class NavComponent extends Vue {
-  // 
+  //
 }

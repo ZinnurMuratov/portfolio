@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import { NavComponent, FooterComponent } from './components/core';
+import { FooterComponent, NavComponent } from './components/core';
 import router from './components/routes';
 
 const app = new Vue({

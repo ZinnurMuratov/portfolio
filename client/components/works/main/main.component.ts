@@ -6,9 +6,9 @@ import Component from 'vue-class-component';
     <section>
       projects main
     </section>
-  `
+  `,
 })
 
 export class MainComponent extends Vue {
-  // 
+  //
 }

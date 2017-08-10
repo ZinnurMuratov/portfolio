@@ -13,5 +13,5 @@ import Component from 'vue-class-component';
 })
 
 export class HomeComponent extends Vue {
-  // 
+  //
 }

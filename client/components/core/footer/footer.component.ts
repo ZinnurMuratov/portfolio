@@ -14,11 +14,11 @@ import Component from 'vue-class-component';
         </ul>
       </section>
     </footer>
-  `
+  `,
 })
 
 export class FooterComponent extends Vue {
-  public socialLinks: Array<SocialLinks> = [
+  public socialLinks: SocialLinks[] = [
     {
       url: 'https://github.com/dannyk08',
       icon: 'github',
@@ -31,7 +31,7 @@ export class FooterComponent extends Vue {
       url: 'https://www.linkedin.com/in/dannyk08',
       icon: 'linkedIn',
     },
-  ]
+  ];
 }
 
 export interface SocialLinks {
