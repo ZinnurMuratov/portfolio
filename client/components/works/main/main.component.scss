@@ -1,0 +1,14 @@
+.main-component {
+  height: 100%;
+  align-items: stretch;
+  align-content: stretch;
+
+  .works-dashboard {
+    @include grid-column(12);
+  }
+
+  .floater {
+    height: calc(100% - 2rem);
+    background: rebeccapurple;
+  }
+}

@@ -59,6 +59,7 @@
     "gulp-cssmin": "0.2.0",
     "gulp-eslint": "4.0.0",
     "gulp-if": "2.0.2",
+    "gulp-imagemin": "^3.3.0",
     "gulp-inject": "4.2.0",
     "gulp-nodemon": "2.2.1",
     "gulp-sass": "3.1.0",

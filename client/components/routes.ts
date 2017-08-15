@@ -3,7 +3,7 @@ import VueRouter, { RouteConfig } from 'vue-router';
 
 import { HomeComponent } from './core';
 import {
-  MainComponent,
+  WorksMainComponent,
 } from './works';
 
 Vue.use(VueRouter);
@@ -11,7 +11,7 @@ Vue.use(VueRouter);
 const routes: RouteConfig[] = [
   { path: '/', component: HomeComponent },
   {
-    path: '/works', component: MainComponent, children: [
+    path: '/works', component: WorksMainComponent, children: [
       // {path: '/portfolio', component: }
     ],
   },

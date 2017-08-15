@@ -17,6 +17,10 @@ gulp.task('dev:watch:client:lint', () => {
   gulp.watch('client/**/*.ts', ['tslint:client']);
 });
 
+gulp.task('dev:watch:assets:images', () => {
+  gulp.watch('client/assets/images/', ['dev:copy:images']);
+});
+
 gulp.task('dev:watch:sass', () => {
   gulp.watch([
     'client/assets/styles/**/*.scss',
@@ -36,6 +40,7 @@ gulp.task('dev:watch:css', () => {
 
 gulp.task('dev:watch', [
   'dev:watch:server:lint',
+  'dev:watch:assets:images',
   'dev:watch:server',
   'dev:watch:views',
   'dev:watch:sass',

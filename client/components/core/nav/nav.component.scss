@@ -1,6 +1,7 @@
-nav.navigation {
-  @include grid-column(12);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-
+.navigation-component {
+  .nav-section {
+    @include grid-column(12);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 }
