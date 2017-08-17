@@ -8,7 +8,10 @@ import Component from 'vue-class-component';
         <ul class="flat-list center">
           <li v-for="link in socialLinks">
             <a v-bind:href="link.url" class="social-icon">
-              <img :src="link.icon"/>
+              <img
+                :srcset="link.icon.src.retina + ' 1.25x'"
+                :src="link.icon.src.nonRetina"
+                :alt="link.icon.alt"/>
             </a>
           </li>
         </ul>
@@ -21,20 +24,34 @@ export class FooterComponent extends Vue {
   public socialLinks: SocialLinks[] = [
     {
       url: 'https://github.com/dannyk08',
-      icon: '/assets/images/social-media/github/icon.png',
-    },
-    {
-      url: 'https://twitter.com/Dannys_io',
-      icon: '/assets/images/social-media/twitter/icon.png',
+      icon: {
+        src: {
+          retina: '/assets/images/social-media/github/icon@2x.png',
+          nonRetina: '/assets/images/social-media/github/icon.png',
+        },
+        alt: 'github icon',
+      },
     },
     {
       url: 'https://www.linkedin.com/in/dannyk08',
-      icon: '/assets/images/social-media/linkedin/icon.png',
+      icon: {
+        src: {
+          retina: '/assets/images/social-media/linkedin/icon@2x.png',
+          nonRetina: '/assets/images/social-media/linkedin/icon.png',
+        },
+        alt: 'linkedIn icon',
+      },
     },
   ];
 }
 
 export interface SocialLinks {
   url: string;
-  icon: string;
+  icon: {
+    src: {
+      retina: string;
+      nonRetina: string;
+    };
+    alt: string;
+  };
 }

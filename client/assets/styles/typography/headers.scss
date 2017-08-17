@@ -2,7 +2,7 @@ h1,
 h2,
 h3 {
   font-family: 'Cutive Mono', monospace;
-  color: white;
+  color: $white;
 }
 
 h1 {
@@ -25,5 +25,5 @@ h6 {
   @include body-default();
   font-family: 'Raleway', sans-serif;
   word-wrap: break-word;
-  color: white;
+  color: $white;
 }
