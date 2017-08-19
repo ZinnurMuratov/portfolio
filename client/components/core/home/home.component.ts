@@ -3,10 +3,10 @@ import Component from 'vue-class-component';
 
 @Component({
   template: `
-    <section class="section-full vertical-align">
+    <section class="home-component section-full vertical-align">
       <header class="main-container-header">
         <h1>Danny Romero</h1>
-        <h4>[Web Developer]</h4>
+        <h4>&lt;Web Developer&gt;</h4>
       </header>
     </section>
   `,

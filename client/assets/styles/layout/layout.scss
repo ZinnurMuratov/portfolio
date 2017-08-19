@@ -7,6 +7,12 @@
   justify-content: center;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-grow: 1;
+}
+
 .flat-list {
   li {
     display: inline-block;

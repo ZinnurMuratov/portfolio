@@ -1,0 +1,21 @@
+.main-component {
+
+  .works-list-item {
+    @include grid-column(6);
+    @include grid-media($tablet-up) {
+      @include grid-column(4);
+    }
+    @include grid-media($desktop-up) {
+      @include grid-column(3);
+    }
+    margin-bottom: 1rem;
+    transition: 1s ease;
+  }
+
+  .works-list-anchor,
+  .works-list-image {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+}
