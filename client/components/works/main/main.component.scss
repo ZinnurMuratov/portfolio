@@ -1,9 +1,5 @@
 .main-component {
 
-  .works-dashboard {
-    @include grid-column(12);
-  }
-
   .works-list-item {
     @include grid-column(6);
     @include grid-media($tablet-up) {
