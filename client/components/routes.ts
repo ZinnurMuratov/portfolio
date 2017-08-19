@@ -3,19 +3,23 @@ import VueRouter, { RouteConfig } from 'vue-router';
 
 import { HomeComponent } from './core';
 import {
+  WorksDashboardComponent,
   WorksMainComponent,
+  WorksWeatherComponent,
 } from './works';
 
 Vue.use(VueRouter);
 
 const routes: RouteConfig[] = [
-  { path: '/', component: HomeComponent },
-  {
-    path: '/works', component: WorksMainComponent, children: [
-      // {path: '/portfolio', component: }
+  { path: '/', component: HomeComponent }, {
+    path: '/works',
+    component: WorksMainComponent,
+    children: [
+      { path: 'dashboard', component: WorksDashboardComponent },
+      { path: 'weather', component: WorksWeatherComponent },
     ],
-  },
-  { path: '*', redirect: '/' },
+    redirect: '/works/dashboard',
+  }, { path: '*', redirect: '/' },
 ];
 
 const router = new VueRouter({
