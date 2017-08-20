@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import * as baseController from './../../controllers/base';
+import { RenderApplication } from './../../controllers';
 
 const BASE_ROUTER = Router();
 
-BASE_ROUTER.get('/', baseController.RenderApplication);
+BASE_ROUTER.get('/', RenderApplication);
 
 export default BASE_ROUTER;
