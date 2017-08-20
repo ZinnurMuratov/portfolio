@@ -10,7 +10,7 @@ export function GetGeolocation(req: Request, res: Response, next: NextFunction) 
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress).split(',')[0];
 
-  const geoLocation = lookup('172.113.110.29'); // lookup(ipAddress);
+  const geoLocation = lookup(ipAddress); // lookup(ipAddress);
 
   return res.json(geoLocation);
 }
