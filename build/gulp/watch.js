@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 const gulp = require('gulp');
 
 gulp.task('dev:watch:server', () => {

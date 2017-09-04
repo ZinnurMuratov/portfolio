@@ -1,5 +1,6 @@
 'use strict';
 const gulp = require('gulp');
+const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
@@ -8,6 +9,7 @@ const moduleImporter = require('sass-module-importer');
 
 gulp.task('dev:sass', () => {
   gulp.src('client/main.scss')
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(
       sass({
@@ -20,6 +22,7 @@ gulp.task('dev:sass', () => {
 
 gulp.task('dev:css:prefix', () => {
   gulp.src('.dev/css/styles/main.css')
+    .pipe(plumber())
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false

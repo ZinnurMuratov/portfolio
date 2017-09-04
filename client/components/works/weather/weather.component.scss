@@ -1,3 +1,87 @@
 .weather-component {
-  background: crimson;
+  
+  .failed-ip,
+  .weather-loader {
+    bottom: 10%;
+    color: $black;
+    text-align: center;
+    transition: 3s;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .weather-app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .weather-data-container {
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    margin: auto;
+    position: relative;
+  }
+  
+  .loading {
+    background-image: url('/assets/images/misc/loading.gif');
+    background-repeat: no-repeat;
+    background-size: 25%;
+    background-color: white;
+    background-position: center center;
+    // cursor: pointer;
+  }
+  
+  .temperature-tag {
+    cursor: pointer;
+  }
+  
+  .weather-data,
+  .weather-canvas-image {
+    float: left;
+    display: inline-block;
+    height: 100%;
+  }
+  
+  .weather-data {
+    min-width: 65%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  
+  .weather-canvas-image {
+    min-width: 35%;
+    background-image: url('https://cdn.dribbble.com/users/261567/screenshots/1099769/googleweather.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .weather-data-header {
+    min-height: 60%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .weather-data-current-temp {
+    font-size: 65px;
+    cursor: pointer;
+  }
+  
+  .weather-data-footer {
+    min-height: 40%;
+  }
+  
+  .weather-data-weekly-cast .weekly-forecast-item {
+    width: calc(100%/7);
+    display: inline-block;
+    float: left;
+    text-align: center;
+  }
+  
+  .weather-data-weekly-cast .weekly-forecast-item footer {
+    font-size: 12px;
+  }
+  
 }

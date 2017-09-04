@@ -1,31 +1,45 @@
 import { NextFunction, Request, Response } from 'express';
-import { lookup } from 'geoip-lite';
-import { get } from 'http';
+import { lookup as geoLookup } from 'geoip-lite';
+import { get } from 'https';
+import { address as selfIP } from 'ip';
+import { URL } from 'url';
 
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 
 export function GetGeolocation(req: Request, res: Response, next: NextFunction) {
-  const ipAddress: string = (req.headers['x-forwarded-for'] ||
+  const clientIP: string = req.headers['x-forwarded-for'] ||
     req.connection.remoteAddress ||
     req.socket.remoteAddress ||
-    req.connection.socket.remoteAddress).split(',')[0];
-
-  const geoLocation = lookup(ipAddress); // lookup(ipAddress);
-
-  return res.json(geoLocation);
+    req.connection.socket.remoteAddress;
+  const IP_ADDRESS = process.env.NODE_ENV === 'production' ? clientIP : selfIP();
+  return res.json(geoLookup(IP_ADDRESS));
 }
 
 export function GetWeather(req: Request, res: Response, next: NextFunction) {
-  const url = `http://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.long}&appid=${WEATHER_API_KEY}`;
+  const forecastURL = new URL(`https://api.darksky.net/forecast/${WEATHER_API_KEY}/${req.query.lat},${req.query.long}`);
 
-  return get(url, (httpRes) => {
-    httpRes.on('data', (data) => {
-      data = data.toString();
-      return res.json(data);
+  return get({
+    hostname: forecastURL.hostname,
+    path: forecastURL.pathname,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }, (getRes) => {
+    getRes.setEncoding('utf8');
+    const resChunks = [];
+
+    getRes.on('data', (data) => {
+      resChunks.push(data);
     });
-  }).on('error', (err) => {
-    console.error(err);
-    return res.json({ sucess: false });
-  });
 
+    getRes.on('end', () => {
+      const json = JSON.parse(resChunks.toString());
+      return res.send(json);
+    });
+
+    getRes.on('error', (error) => {
+      return res.send(error);
+    });
+  });
 }

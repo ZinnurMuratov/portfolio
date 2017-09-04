@@ -14,7 +14,6 @@ export class GeoLocatorService extends VueResourceModel {
     return new Promise((resolve, reject) => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((location) => {
-          console.log('get current', location);
           return resolve(location);
         }, (err) => {
           return reject(err);
