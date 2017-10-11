@@ -2,7 +2,7 @@
 const gulp = require('gulp');
 const inject = require('gulp-inject');
 
-gulp.task('dev:inject:component:scss', () => {
+gulp.task('inject:component:scss', () => {
   let target = gulp.src('./client/main.scss');
   let sources = gulp.src(['./client/components/**/*.scss'], { read: false });
 
@@ -18,6 +18,6 @@ gulp.task('dev:inject:component:scss', () => {
     .pipe(gulp.dest('./client/'));
 });
 
-gulp.task('dev:inject', [
-  'dev:inject:component:scss'
+gulp.task('inject:all', [
+  'inject:component:scss'
 ]);

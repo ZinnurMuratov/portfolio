@@ -6,7 +6,7 @@ gulp.task('dev:watch:server', () => {
 });
 
 gulp.task('dev:watch:views', () => {
-  gulp.watch('server/**/*.ejs', ['dev:copy:ejs']);
+  gulp.watch('server/**/*.ejs', ['copy:ejs']);
 });
 
 gulp.task('dev:watch:server:lint', () => {
@@ -18,7 +18,7 @@ gulp.task('dev:watch:client:lint', () => {
 });
 
 gulp.task('dev:watch:assets:images', () => {
-  gulp.watch('client/assets/images/', ['dev:copy:images']);
+  gulp.watch('client/assets/images/', ['copy:images']);
 });
 
 gulp.task('dev:watch:sass', () => {
@@ -26,15 +26,15 @@ gulp.task('dev:watch:sass', () => {
     'client/assets/styles/**/*.scss',
     'client/components/**/*.scss',
     'client/main.scss'
-  ], ['dev:sass']);
+  ], ['sass']);
 });
 
 gulp.task('dev:watch:sass:injector', () => {
-  gulp.watch('client/components/**/*.scss', ['dev:inject:component:scss']);
+  gulp.watch('client/components/**/*.scss', ['inject:component:scss']);
 });
 
 gulp.task('dev:watch:css', () => {
-  gulp.watch('.dev/client/assets/styles/main.css', ['dev:css:prefix']);
+  gulp.watch('.dev/client/assets/styles/main.css', ['css:prefix']);
 });
 
 

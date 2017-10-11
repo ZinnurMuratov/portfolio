@@ -6,28 +6,26 @@ const autoprefixer = require('gulp-autoprefixer');
 const cssmin = require('gulp-cssmin');
 const moduleImporter = require('sass-module-importer');
 
-gulp.task('dev:sass', () => {
+const config = require('./config');
+
+gulp.task('sass', () => {
   gulp.src('client/main.scss')
     .pipe(sourcemaps.init())
-    .pipe(
-      sass({
-        importer: moduleImporter()
-      }).on('error', sass.logError)
-    )
+    .pipe(sass({
+      importer: moduleImporter(),
+    }).on('error', sass.logError))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('.dev/client/assets/styles/'));
+    .pipe(gulp.dest(`${config.buildPath}/client/assets/styles/`));
 });
 
-gulp.task('dev:css:prefix', () => {
+gulp.task('css:prefix', () => {
   gulp.src('.dev/css/styles/main.css')
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
     }))
     .pipe(cssmin())
-    .pipe(gulp.dest('.dev/client/assets/styles/'));
+    .pipe(gulp.dest(`${config.buildPath}/client/assets/styles/`));
 });
 
-// gulp task to remove scss comments
-
-gulp.task('dev:styles', ['dev:sass']);
+gulp.task('dev:styles', ['sass']);
