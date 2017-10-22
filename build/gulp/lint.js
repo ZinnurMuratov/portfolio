@@ -11,7 +11,7 @@ let isFixed = function (file) {
 };
 
 gulp.task('lint:sass', () => {
-  gulp.src(['client/**/*.scss'])
+  return gulp.src(['client/**/*.scss'])
     .pipe(plumber())
     .pipe(sassLint({
       options: {

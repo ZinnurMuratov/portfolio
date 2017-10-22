@@ -2,7 +2,7 @@
 const gulp = require('gulp');
 
 gulp.task('dev:watch:server', () => {
-  gulp.watch('server/**/*.ts', ['dev:typescript:server']);
+  gulp.watch('server/**/*.ts', ['typescript:server']);
 });
 
 gulp.task('dev:watch:views', () => {
@@ -33,11 +33,6 @@ gulp.task('dev:watch:sass:injector', () => {
   gulp.watch('client/components/**/*.scss', ['inject:component:scss']);
 });
 
-gulp.task('dev:watch:css', () => {
-  gulp.watch('.dev/client/assets/styles/main.css', ['css:prefix']);
-});
-
-
 gulp.task('dev:watch', [
   'dev:watch:server:lint',
   'dev:watch:assets:images',
@@ -45,5 +40,4 @@ gulp.task('dev:watch', [
   'dev:watch:views',
   'dev:watch:sass',
   'dev:watch:sass:injector',
-  'dev:watch:css',
 ]);

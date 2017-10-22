@@ -1,30 +1,26 @@
 'use strict';
 const gulp = require('gulp');
+const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
-const cssmin = require('gulp-cssmin');
+const cleanCSS = require('gulp-clean-css');
 const moduleImporter = require('sass-module-importer');
 
 const config = require('./config');
 
 gulp.task('sass', () => {
-  gulp.src('client/main.scss')
+  return gulp.src('client/main.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
       importer: moduleImporter(),
     }).on('error', sass.logError))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(`${config.buildPath}/client/assets/styles/`));
-});
-
-gulp.task('css:prefix', () => {
-  gulp.src('.dev/css/styles/main.css')
-    .pipe(autoprefixer({
+    .pipe(gulpIf(config.prod, autoprefixer({
       browsers: ['last 2 versions'],
-      cascade: false
-    }))
-    .pipe(cssmin())
+      cascade: false,
+    })))
+    .pipe(gulpIf(config.prod, cleanCSS()))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(`${config.buildPath}/client/assets/styles/`));
 });
 

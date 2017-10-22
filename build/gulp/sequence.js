@@ -20,8 +20,11 @@ gulp.task('run', (callback) => {
 gulp.task('build', (cb) => {
   return sequence(
     'del',
+    'webpack:prod',
     'inject:all',
     'copy:all',
+    'sass',
+    'typescript:server',
     cb
   );
 });

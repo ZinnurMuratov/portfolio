@@ -11,12 +11,14 @@ gulp.task('inject:component:scss', () => {
       starttag: '// startinject',
       endtag: '// endinject',
       relative: true,
-      transform: function (filepath) {
+      transform: (filepath) => {
         return '@import \'' + filepath + '\';';
       }
     }))
     .pipe(gulp.dest('./client/'));
 });
+
+// inject minified css into application
 
 gulp.task('inject:all', [
   'inject:component:scss'
