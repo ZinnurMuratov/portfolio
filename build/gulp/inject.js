@@ -1,6 +1,7 @@
 'use strict';
 const gulp = require('gulp');
 const inject = require('gulp-inject');
+// const config = require('./config');
 
 gulp.task('inject:component:scss', () => {
   let target = gulp.src('./client/main.scss');
@@ -17,9 +18,3 @@ gulp.task('inject:component:scss', () => {
     }))
     .pipe(gulp.dest('./client/'));
 });
-
-// inject minified css into application
-
-gulp.task('inject:all', [
-  'inject:component:scss'
-]);

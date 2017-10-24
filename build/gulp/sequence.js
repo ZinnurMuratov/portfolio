@@ -5,7 +5,7 @@ const sequence = require('run-sequence');
 gulp.task('run', (callback) => {
   return sequence(
     'del',
-    'inject:all',
+    'inject:component:scss',
     'lint:all', [
       'dev:nodemon',
       'copy:all',
@@ -21,9 +21,8 @@ gulp.task('build', (cb) => {
   return sequence(
     'del',
     'webpack:prod',
-    'inject:all',
+    'inject:component:scss', 'sass',
     'copy:all',
-    'sass',
     'typescript:server',
     cb
   );
