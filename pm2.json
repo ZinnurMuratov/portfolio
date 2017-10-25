@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "dannys.io",
+      "script": "server.js",
+      "cwd": ".dist/server/server.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
