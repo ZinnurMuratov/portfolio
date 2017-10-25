@@ -28,8 +28,8 @@ export class FooterComponent extends Vue {
       url: 'https://github.com/dannyk08',
       icon: {
         src: {
-          retina: '/assets/images/social-media/github/icon@2x.png',
-          nonRetina: '/assets/images/social-media/github/icon.png',
+          retina: '/images/social-media/github/icon@2x.png',
+          nonRetina: '/images/social-media/github/icon.png',
         },
         alt: 'github icon',
       },
@@ -38,8 +38,8 @@ export class FooterComponent extends Vue {
       url: 'https://www.linkedin.com/in/dannyk08',
       icon: {
         src: {
-          retina: '/assets/images/social-media/linkedin/icon@2x.png',
-          nonRetina: '/assets/images/social-media/linkedin/icon.png',
+          retina: '/images/social-media/linkedin/icon@2x.png',
+          nonRetina: '/images/social-media/linkedin/icon.png',
         },
         alt: 'linkedIn icon',
       },

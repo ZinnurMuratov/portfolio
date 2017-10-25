@@ -35,7 +35,7 @@ gulp.task('copy:ejs', () => {
 });
 
 gulp.task('copy:images', () => {
-  return gulp.src('client/images/**/*.{jpg,png,gif}')
+  return gulp.src('client/assets/images/**/*.{jpg,png,gif}')
     .pipe(gulpIf(config.prod, imagemin()))
     .pipe(gulp.dest(`${config.buildPath}/client/images/`));
 });
