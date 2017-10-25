@@ -9,7 +9,7 @@ const config = require('./config');
 
 gulp.task('copy:ejs', () => {
   let jsSources = gulp.src([`${config.buildPath}/client/scripts/*.bundle.js`]);
-  let cssSources = gulp.src([`${config.buildPath}/client/assets/styles/*.css`])
+  let cssSources = gulp.src([`${config.buildPath}/client/styles/*.css`]);
 
   let applicationSrc = gulp.src('server/views/**/*.ejs')
     .pipe(gulpIf(config.prod, inject(jsSources, {
@@ -35,9 +35,9 @@ gulp.task('copy:ejs', () => {
 });
 
 gulp.task('copy:images', () => {
-  return gulp.src('client/assets/images/**/*.{jpg,png,gif}')
-    .pipe(imagemin())
-    .pipe(gulp.dest(`${config.buildPath}/client/assets/images`));
+  return gulp.src('client/images/**/*.{jpg,png,gif}')
+    .pipe(gulpIf(config.prod, imagemin()))
+    .pipe(gulp.dest(`${config.buildPath}/client/images/`));
 });
 
 gulp.task('copy:all', [

@@ -23,7 +23,7 @@ gulp.task('sass', () => {
     .pipe(gulpIf(config.prod, cleanCSS()))
     .pipe(gulpIf(config.prod, gulpRev()))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(`${config.buildPath}/client/assets/styles/`));
+    .pipe(gulp.dest(`${config.buildPath}/client/styles/`));
 });
 
 gulp.task('dev:styles', ['sass']);

@@ -19,13 +19,6 @@
     normalize-path "^2.0.1"
     through2 "^2.0.3"
 
-"@types/body-parser@*":
-  version "1.16.6"
-  resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.16.6.tgz#ccba8895337444e07f1134dab696edaf969b09a9"
-  dependencies:
-    "@types/express" "*"
-    "@types/node" "*"
-
 "@types/compression@0.0.34":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/compression/-/compression-0.0.34.tgz#c7eb6bdd2b919099c9da62f2158934894af887f1"
@@ -2677,12 +2670,6 @@ glogg@^1.0.0:
   resolved "https://registry.yarnpkg.com/glogg/-/glogg-1.0.0.tgz#7fe0f199f57ac906cf512feead8f90ee4a284fc5"
   dependencies:
     sparkles "^1.0.0"
-
-gonzales-pe-sl@^4.2.3:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/gonzales-pe-sl/-/gonzales-pe-sl-4.2.3.tgz#6a868bc380645f141feeb042c6f97fcc71b59fe6"
-  dependencies:
-    minimist "1.1.x"
 
 gonzales-pe@^4.1.1:
   version "4.2.2"

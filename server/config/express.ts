@@ -7,9 +7,9 @@ import { IndexRouter } from './routes/index';
 export function startExpress(app: Application) {
   app.set('view engine', 'ejs');
   app.set('views', config.views_dir);
-  app.use(ExpressStatic(config.client_assets_path));
+  app.use('/', ExpressStatic(config.client_assets_path));
 
-  if ( !config.prod) {
+  if (!config.prod) {
     app.disable('etag');
   }
 
