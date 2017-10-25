@@ -23,5 +23,8 @@
       "info"
     ]
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -2,6 +2,8 @@
 const gulp = require('gulp');
 const del = require('del');
 
-gulp.task('dev:del', () => {
-  return del('.dev');
+const config = require('./config');
+
+gulp.task('del', () => {
+  return del(config.buildPath);
 });

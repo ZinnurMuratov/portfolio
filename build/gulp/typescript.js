@@ -1,13 +1,18 @@
 'use strict';
 const gulp = require('gulp');
 const plumber = require('gulp-plumber');
+const gulpIf = require('gulp-if');
+const uglify = require('gulp-uglify');
 const typescript = require('gulp-typescript');
 
-gulp.task('dev:typescript:server', () => {
+const config = require('./config');
+
+gulp.task('typescript:server', () => {
   return gulp.src('server/**/*.ts')
     .pipe(plumber())
     .pipe(typescript({
       noImplicitAny: true,
     }))
-    .pipe(gulp.dest('.dev/server'));
+    .pipe(gulpIf(config.prod, uglify()))
+    .pipe(gulp.dest(`${config.buildPath}/server`));
 });

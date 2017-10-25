@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "dannys.io",
+      "script": ".dist/server/server.js",
+      "cwd": "/var/www/portfolio",
+      "watch": true,
+      "ignore_watch": [
+        "^(?!.dist$).*"
+      ],
+      "env": {
+        "NODE_ENV": "'production'"
+      }
+    }
+  ]
+}

@@ -2,9 +2,11 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
 
-gulp.task('dev:nodemon', ['dev:typescript:server'], () => {
+const config = require('./config');
+
+gulp.task('dev:nodemon', ['typescript:server'], () => {
   nodemon({
-    script: '.dev/server/server.js',
-    watch: '.dev/server/'
+    script: `${config.buildPath}server/server.js`,
+    watch: `${config.buildPath}server`,
   });
 });

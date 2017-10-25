@@ -7,7 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Danny's IO | Web Developer Porfolio</title>
 
-  <link rel="stylesheet" type="" href="/assets/styles/main.css">
+  <%# startinject:css %>
+  <link rel="stylesheet" href="/styles/main.css">
+  <%# endinject:css %>
 
   <link href="https://fonts.googleapis.com/css?family=Cutive+Mono|Raleway" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -16,7 +18,9 @@
 <body>
   <main class="main-container" id="main-app"></main>
 
+  <%# startinject:js %>
   <script src="/main.bundle.js"></script>
+  <%# endinject:js %>
 </body>
 
 </html>
