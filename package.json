@@ -16,7 +16,8 @@
     "webpack": "webpack",
     "prestart": "yarn install",
     "start": "concurrently -k \"gulp run\" \"npm run webpack\"",
-    "build": "rm -rf node_modules yarn.lock; npm run prestart; NODE_ENV=production gulp build;"
+    "build": "npm run prestart; NODE_ENV=production gulp build;",
+    "prodBuild": "rm -rf node_modules yarn.lock; npm run build;",
   },
   "repository": {
     "type": "git",

@@ -2,10 +2,14 @@
   "apps": [
     {
       "name": "dannys.io",
-      "script": "server.js",
-      "cwd": ".dist/server/server.js",
+      "script": ".dist/server/server.js",
+      "cwd": "/var/www/portfolio",
+      "watch": true,
+      "ignore_watch": [
+        "^(?!.dist$).*"
+      ],
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "'production'"
       }
     }
   ]
