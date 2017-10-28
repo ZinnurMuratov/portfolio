@@ -19,7 +19,7 @@ export class WorksDashboardComponent extends Vue {
   public works: IWorks[] = [
     {
       url: '/works/weather',
-      thumbnail: 'https://media.gettyimages.com/photos/misty-summer-mountain-hills-landscape-picture-id509636590?b=1&k=6&m=509636590&s=170x170&h=NEvrEAqkCj6Be-HrNQwJYzZlb023H4Aq3mc76483-l4=',
+      thumbnail: '/images/misc/loading.gif',
     },
   ];
 }

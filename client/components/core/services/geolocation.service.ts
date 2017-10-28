@@ -1,7 +1,9 @@
-import { VueResourceModel } from './../models';
+import { UserPosition, VueResourceModel } from './../models';
 
 export class GeoLocatorService extends VueResourceModel {
 
+  // use this to call to the server and get users geolocation
+  // then make a second call to get their weather
   public getLocation() {
     return this.$http.get('/api/geoLocation').then((res) => {
       return res.json();
@@ -14,9 +16,10 @@ export class GeoLocatorService extends VueResourceModel {
     return new Promise((resolve, reject) => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((location) => {
-          return resolve(location);
+          const position: UserPosition = new UserPosition(Object.assign(location, { success: true }));
+          return resolve(position);
         }, (err) => {
-          return reject(err);
+          return reject(Object.assign(err, { success: false }));
         }, {
             enableHighAccuracy: true,
             timeout: 5500,

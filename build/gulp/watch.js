@@ -9,14 +9,6 @@ gulp.task('dev:watch:views', () => {
   gulp.watch('server/**/*.ejs', ['copy:ejs']);
 });
 
-gulp.task('dev:watch:server:lint', () => {
-  gulp.watch('server/**/*.ts', ['tslint:server']);
-});
-
-gulp.task('dev:watch:client:lint', () => {
-  gulp.watch('client/**/*.ts', ['tslint:client']);
-});
-
 gulp.task('dev:watch:assets:images', () => {
   gulp.watch('client/assets/images/', ['copy:images']);
 });
@@ -34,7 +26,6 @@ gulp.task('dev:watch:sass:injector', () => {
 });
 
 gulp.task('dev:watch', [
-  'dev:watch:server:lint',
   'dev:watch:assets:images',
   'dev:watch:server',
   'dev:watch:views',

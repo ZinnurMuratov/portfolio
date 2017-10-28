@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { lookup as geoLookup } from 'geoip-lite';
-import { get } from 'https';
 import { address as selfIP } from 'ip';
-import { URL } from 'url';
+import * as requestLib from 'request';
 
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 
@@ -16,30 +15,19 @@ export function GetGeolocation(req: Request, res: Response, next: NextFunction) 
 }
 
 export function GetWeather(req: Request, res: Response, next: NextFunction) {
-  const forecastURL = new URL(`https://api.darksky.net/forecast/${WEATHER_API_KEY}/${req.query.lat},${req.query.long}`);
+  if (!req.query.long || !req.query.lat) {
+    return res.status(400).json({ error: 'Must include latitutde and longitude' });
+  }
 
-  return get({
-    hostname: forecastURL.hostname,
-    path: forecastURL.pathname,
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }, (getRes) => {
-    getRes.setEncoding('utf8');
-    const resChunks = [];
+  const forecastURL = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${req.query.lat},${req.query.long}?exclude=hourly,minutely`;
 
-    getRes.on('data', (data) => {
-      resChunks.push(data);
-    });
-
-    getRes.on('end', () => {
-      const json = JSON.parse(resChunks.toString());
-      return res.send(json);
-    });
-
-    getRes.on('error', (error) => {
-      return res.send(error);
+  requestLib(forecastURL, { json: true }, (error: any, response: any, body: any) => {
+    if (error) {
+      return res.send({ data: error, success: false });
+    }
+    return res.status(response.statusCode).json({
+      data: body,
+      success: response.statusCode >= 200 && response.statusCode <= 300,
     });
   });
 }

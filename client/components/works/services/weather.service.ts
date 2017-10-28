@@ -1,29 +1,22 @@
 import { VueResourceModel } from './../../core/models';
-import { GeoLocatorService } from './../../core/services';
 
 export class WeatherService extends VueResourceModel {
-  private geolocationService = new GeoLocatorService();
+  // make this call dependent on geolocation
+  public getWeather(geolocation: GeoLocation) {
+    const getWeatherOptions = {
+      params: {
+        lat: geolocation.lat,
+        long: geolocation.long,
+      },
+      method: 'GET',
+      url: '/api/getWeather',
+    };
 
-  public getWeather() {
-    return this.geolocationService.getLocation().then((res) => {
-      if (!res) { return null; }
-
-      const getWeatherOptions = {
-        params: {
-          lat: res.ll[0],
-          long: res.ll[1],
-        },
-        method: 'GET',
-        url: '/api/getWeather',
-      };
-
-      return this.$http(getWeatherOptions).then((weatherData) => {
-        if (!weatherData) { return null; }
-        return weatherData.json();
-      }, (err) => {
-        return err;
-      });
-
+    return this.$http(getWeatherOptions).then((weatherData) => {
+      if (!weatherData) { return { success: false }; }
+      return weatherData.json();
+    }, (err) => {
+      return err;
     });
   }
 }

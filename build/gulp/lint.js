@@ -5,6 +5,7 @@ const gulpIf = require('gulp-if');
 const tslint = require('gulp-tslint');
 const eslint = require('gulp-eslint');
 const sassLint = require('gulp-sass-lint');
+const beautify = require('gulp-sassbeautify');
 
 let isFixed = function (file) {
   return file.eslint !== null && file.eslint.fixed;
@@ -13,6 +14,7 @@ let isFixed = function (file) {
 gulp.task('lint:sass', () => {
   return gulp.src(['client/**/*.scss'])
     .pipe(plumber())
+    .pipe(beautify())
     .pipe(sassLint({
       options: {
         configFile: 'client/.sass-lint.yml',

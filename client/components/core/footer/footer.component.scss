@@ -1,16 +1,27 @@
 .footer-component {
   .footer-section {
     @include grid-column(12);
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    
+    @include grid-media($tablet-up) {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
   }
 
   .flat-list li {
     padding-right: 1.5rem; 
   }
+
   .social-icon img {
-    max-height: 32px;
-    max-width: 32px;
+    max-height: 1.5rem;
+    max-width: 1.5rem;
+
+    @include grid-media($tablet-up) {
+      max-height: 32px;
+      max-width: 32px;
+    }
   }
   
 }
