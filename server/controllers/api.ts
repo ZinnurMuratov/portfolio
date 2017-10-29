@@ -19,7 +19,9 @@ export function GetWeather(req: Request, res: Response, next: NextFunction) {
     return res.status(400).json({ error: 'Must include latitutde and longitude' });
   }
 
-  const forecastURL = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${req.query.lat},${req.query.long}?exclude=hourly,minutely`;
+  const forecastURL = `https://api.darksky.net/forecast/` +
+    `${WEATHER_API_KEY}/${req.query.lat},${req.query.long}` +
+    `?exclude=hourly,minutely&units=si`;
 
   requestLib(forecastURL, { json: true }, (error: any, response: any, body: any) => {
     if (error) {

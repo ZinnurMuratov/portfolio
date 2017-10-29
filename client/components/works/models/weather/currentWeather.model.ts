@@ -39,8 +39,12 @@ export class CurrentWeather {
     this.ozone = obj && obj.ozone || null;
   }
 
-  get fahrenheitUnits(): number {
-    return (this.temperature * 9 / 5) + 32;
+  public fahrenheitUnits(temp: number): string {
+    return `${((temp * 9 / 5) + 32).toFixed(1)} °F`;
+  }
+
+  public celciusUnits(temp: number): string {
+    return `${(temp).toFixed(1)} °C`;
   }
 
 }

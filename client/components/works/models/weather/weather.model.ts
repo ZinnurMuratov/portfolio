@@ -8,7 +8,6 @@ export class Weather {
   public daily: DailyWeather;
   public flags: WeatherFlags;
   public offset: number;
-  public success: boolean;
 
   constructor(obj?: any) {
     this.latitude = obj && obj.latitude || null;
@@ -18,6 +17,5 @@ export class Weather {
     this.daily = obj && new DailyWeather(obj.daily) || null;
     this.flags = obj && new WeatherFlags(obj.flags) || null;
     this.offset = obj && obj.offset || null;
-    this.success = obj && obj.success || null;
   }
 }

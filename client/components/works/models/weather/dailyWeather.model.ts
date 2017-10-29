@@ -87,8 +87,12 @@ export class DailyWeatherData {
 
 export class DailyWeather {
   public data: DailyWeatherData[];
+  public summary?: string;
+  public icon?: string;
 
   constructor(obj?: any) {
+    this.summary = obj && obj.summary || null;
+    this.icon = obj && obj.icon || null;
     this.data = obj && obj.data.map((d: DailyWeatherData) => new DailyWeatherData(d)) || null;
   }
 }
