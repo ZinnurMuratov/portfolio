@@ -40,6 +40,16 @@
     width: 100%;
   }
 
+  .weather-data-header {
+    background-color: crimson;
+    padding: 2rem 0;
+
+    .weather-data-font {
+      color: white;
+    }
+    
+  }
+
   .weather-data-today {
     @include grid-column(12);
   }
