@@ -2,8 +2,16 @@ $mobile-breakpoint: 700px !default;
 $tablet-breakpoint: 992px !default;
 $desktop-breakpoint: 1200px !default;
 
+$mobile-only: (
+  media: "(max-width: #{$tablet-breakpoint})"
+);
+
 $tablet-up: (
   media: $mobile-breakpoint
+);
+
+$tablet-only: (
+  media: "(min-width: #{$tablet-breakpoint}) and (max-width: #{$desktop-breakpoint})"
 );
 
 $desktop-up: (

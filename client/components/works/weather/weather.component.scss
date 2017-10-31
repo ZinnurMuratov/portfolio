@@ -5,10 +5,20 @@
     width: 100%;
     min-height: 20rem;
 
+    &::after {
+      clear: both;
+      content: '';
+      display: block;
+    }
+
     @include grid-media($tablet-up) {
       margin: auto;
       width: 33rem;
-      height: 22rem;
+      min-height: 20rem;    
+    }
+
+    @include grid-media($desktop-up) {
+      width: 45rem;
     }
   }
 
@@ -25,12 +35,13 @@
   }
 
   .weather-loader {
-    bottom: 10%;
+    top: 50%;
     color: $black;
     text-align: center;
     transition: 3s;
     position: absolute;
     width: 100%;
+    cursor: pointer;
   }
 
   .weather-data-header,
@@ -42,33 +53,82 @@
 
   .weather-data-header {
     background-color: crimson;
-    padding: 2rem 0;
+    height: 10rem;
+    position: relative;
 
     .weather-data-font {
       color: white;
     }
-    
+
+    .weather-data-current-temp {
+      font-size: 2rem;
+    }
+
+    @include grid-media($desktop-up) {
+      height: 15rem;
+    }
   }
 
   .weather-data-today {
     @include grid-column(12);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .weather-data-footer {
-    .left-side {
+    .day-of-the-week {
       @include grid-column(4);
     }
 
-    .right-side {
+    .weather-info {
       @include grid-column(8);
     }
+
+    .weather-info-temp {
+      margin-bottom: .5rem;
+    }
+    .weather-info-temp-high {
+      font-size: 1.25rem;
+    }
+
+    .weather-info-temp-low {
+      font-size: .9rem;
+    }
+
+    @include grid-media($desktop-up) {
+      .day-of-the-week,
+      .weather-info {
+        @include grid-column(12);
+      }
+
+      .weather-info p {
+        padding-top: .7rem;
+
+        &:last-of-type {
+          padding-bottom: .7rem;
+        }
+      }
+    }
+
   }
 
   .weather-data-weekly-cast {
     li {
       float: left;
       width: 100%;
-      padding: 1rem 0;
+      padding-top: 2rem;
+
+      &:last-of-type {
+        padding-bottom: 2rem;
+      }
+
+      @include grid-media($desktop-up) {
+        width: (100%/7);
+        padding-bottom: 2rem;
+        text-align: center;
+      }
+
     }
   }
   

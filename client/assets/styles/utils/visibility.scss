@@ -1,0 +1,41 @@
+.show-mobile-only {
+  @include grid-media($tablet-up) {
+    display: none !important;
+  }
+}
+
+.show-tablet-only {
+  @include grid-media($mobile-only) {
+    display: none !important;
+  }
+  @include grid-media($desktop-up) {
+    display: none !important;
+  }
+}
+
+.show-desktop-only {
+  @include grid-media($mobile-only) {
+    display: none !important;
+  }
+  @include grid-media($tablet-only) {
+    display: none !important;
+  }
+}
+
+.hide-mobile-only {
+  @include grid-media($mobile-only) {
+    display: none !important;
+  }
+}
+
+.hide-tablet-only {
+  @include grid-media($tablet-only) {
+    display: none !important;
+  }
+}
+
+.hide-desktop-only {
+  @include grid-media($desktop-up) {
+    display: none !important;
+  }
+}
