@@ -2,10 +2,11 @@ import * as moment from 'moment';
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+import { FlickrOptions } from './../../core/interfaces';
 import { UserPosition } from './../../core/models';
 import { GeoLocatorService } from './../../core/services';
-import { WeatherData } from './../models';
-import { GeoLocation, WeatherService } from './../services';
+import { FlickrData, WeatherData } from './../models';
+import { FlickrService, GeoLocation, WeatherService } from './../services';
 
 @Component({
   template: `
@@ -13,7 +14,9 @@ import { GeoLocation, WeatherService } from './../services';
       <section class="weather-data-container" v-bind:class="{ 'loading-weather': loadingWeather }">
 
         <main class="weather-data" v-if="weatherData">
-          <header class="weather-data-header">
+          <header
+            class="weather-data-header"
+            :style="{'background-image': backgroundWeatherImage }">
             <div class="weather-data-today">
               <h4 class="weather-data-font weather-data-current-temp">
               {{ weatherData.data.currently.fahrenheitUnits(weatherData.data.currently.temperature) }}
@@ -50,7 +53,8 @@ import { GeoLocation, WeatherService } from './../services';
         </main>
 
         <div class="text-center load-weather" v-if="loadWeather.display">
-          <p v-on:click="clientGetWeather()" class="weather-loader">{{ loadWeather.message }}</p>
+          <p v-on:click="setBackgroundImage()" class="weather-loader">load images</p>
+          <!-- <p v-on:click="clientGetWeather()" class="weather-loader">{{ loadWeather.message }}</p> -->
         </div>
       </section>
     </main>
@@ -58,6 +62,7 @@ import { GeoLocation, WeatherService } from './../services';
 })
 
 export class WorksWeatherComponent extends Vue {
+  public backgroundWeatherImage: string;
   public loadingWeather: boolean = false;
   public loadWeather: { display: boolean, message: string } = {
     display: false,
@@ -67,6 +72,7 @@ export class WorksWeatherComponent extends Vue {
 
   private weatherService = new WeatherService();
   private geolocationService = new GeoLocatorService();
+  private flickrService = new FlickrService();
 
   public clientGetWeather() {
     this.loadingWeather = true;
@@ -98,6 +104,26 @@ export class WorksWeatherComponent extends Vue {
           }
         });
       }
+    });
+  }
+
+  public setBackgroundImage(weatherTags: string) {
+    const flickerOptions: FlickrOptions = {
+      tags: weatherTags || 'wet',
+      safe_search: '1',
+      content_type: '1',
+      media: 'photos',
+      geo_context: '2',
+    };
+
+    this.flickrService.getImages(flickerOptions).then((load) => {
+      const data = new FlickrData(load.data);
+      const randomImage = data.photos.photo.find((photo, index, array) => {
+        return index === Math.floor(Math.random() * array.length);
+      });
+      this.backgroundWeatherImage = `url("https://c1.staticflickr.com/${randomImage.farm}/${randomImage.server}/${randomImage.id}_${randomImage.secret}.jpg")`;
+      console.log('randomImage:', randomImage);
+      console.log('this.backgroundWeatherImage:', this.backgroundWeatherImage);
     });
   }
 

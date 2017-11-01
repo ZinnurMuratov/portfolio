@@ -21,7 +21,8 @@
       "error",
       "warn",
       "info"
-    ]
+    ],
+    "max-classes-per-file": [true, 5, "exclude-class-expressions"]
   },
   "rulesDirectory": [],
   "exclude": [

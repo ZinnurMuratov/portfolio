@@ -15,9 +15,7 @@ export class WeatherService extends VueResourceModel {
     return this.$http(getWeatherOptions).then((weatherData) => {
       if (!weatherData) { return { success: false }; }
       return weatherData.json();
-    }, (err) => {
-      return err;
-    });
+    }, (err) => err);
   }
 }
 
