@@ -3,13 +3,13 @@
     {
       "name": "dannys.io",
       "script": ".dist/server/server.js",
-      "cwd": "/var/www/portfolio",
+      "cwd": "/home/danny/Sites/portfolio/",
       "watch": true,
       "ignore_watch": [
         "^(?!.dist$).*"
       ],
-      "env": {
-        "NODE_ENV": "'production'"
+      "env_production": {
+        "NODE_ENV": "production"
       }
     }
   ]
