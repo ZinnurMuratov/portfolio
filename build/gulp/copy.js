@@ -1,5 +1,6 @@
 'use strict';
 const gulp = require('gulp');
+const plumber = require('gulp-plumber');
 const gulpIf = require('gulp-if');
 const ejsMin = require('gulp-ejsmin');
 const imagemin = require('gulp-imagemin');
@@ -12,6 +13,7 @@ gulp.task('copy:ejs', () => {
   let cssSources = gulp.src([`${config.buildPath}/client/styles/*.css`]);
 
   let applicationSrc = gulp.src('server/views/**/*.ejs')
+    .pipe(plumber())
     .pipe(gulpIf(config.prod, inject(jsSources, {
       starttag: '<%# startinject:js %>',
       endtag: '<%# endinject:js %>',
@@ -36,6 +38,7 @@ gulp.task('copy:ejs', () => {
 
 gulp.task('copy:images', () => {
   return gulp.src('client/assets/images/**/*.{jpg,png,gif}')
+    .pipe(plumber())
     .pipe(gulpIf(config.prod, imagemin()))
     .pipe(gulp.dest(`${config.buildPath}/client/images/`));
 });

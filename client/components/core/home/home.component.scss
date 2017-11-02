@@ -6,6 +6,11 @@
   .main-container-header {
     text-align: center;
     flex: none;
+
+    .header-transition {
+      transition: color 2s ease-in;
+    }
+
   }
 
 }

@@ -1,3 +1,4 @@
+'use strict';
 const helpers = require('./helper.methods');
 
 module.exports = {

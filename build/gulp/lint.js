@@ -1,10 +1,11 @@
-'user strict';
+'use strict';
 const gulp = require('gulp');
+const plumber = require('gulp-plumber');
 const gulpIf = require('gulp-if');
 const tslint = require('gulp-tslint');
 const eslint = require('gulp-eslint');
 const sassLint = require('gulp-sass-lint');
-const plumber = require('gulp-plumber');
+const beautify = require('gulp-sassbeautify');
 
 let isFixed = function (file) {
   return file.eslint !== null && file.eslint.fixed;
@@ -13,6 +14,7 @@ let isFixed = function (file) {
 gulp.task('lint:sass', () => {
   return gulp.src(['client/**/*.scss'])
     .pipe(plumber())
+    .pipe(beautify())
     .pipe(sassLint({
       options: {
         configFile: 'client/.sass-lint.yml',
@@ -25,6 +27,7 @@ gulp.task('lint:sass', () => {
 
 gulp.task('eslint:build', () => {
   return gulp.src(['build/**/*.js'])
+    .pipe(plumber())
     .pipe(eslint({
       configFile: '.eslintrc.json',
       fix: true
@@ -36,10 +39,8 @@ gulp.task('eslint:build', () => {
 });
 
 gulp.task('tslint:all', () => {
-  return gulp.src([
-    'server/**/*.ts',
-    'client/**/*.ts'
-  ])
+  return gulp.src(['server/**/*.ts', 'client/**/*.ts'])
+    .pipe(plumber())
     .pipe(tslint({
       configuration: 'tslint.json',
       formatter: 'verbose',

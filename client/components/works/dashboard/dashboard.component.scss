@@ -1,0 +1,33 @@
+.dashboard-component {
+  .works-list-item {
+    @include grid-column(12);
+    height: 15rem;
+    position: relative;
+    margin-bottom: 1rem;
+    transition: 1s ease;
+    
+    @include grid-media($tablet-up) {
+      @include grid-column(4);
+    }
+    @include grid-media($desktop-up) {
+      @include grid-column(3);
+    }
+  }
+  
+  .works-list-item-anchor {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat; 
+  }
+
+  .works-list-title {
+    position: absolute;
+    top: 50%;
+    color: $white;
+    width: 100%;
+    text-align: center;
+  }
+}
