@@ -10,7 +10,7 @@ export function GetWeather(req: Request, res: Response, next: NextFunction) {
 
   const WEATHER_API_KEY: string = process.env.WEATHER_API_KEY || config.keys.weather;
 
-  const forecastURL = `${config.urls.dark_sky}${WEATHER_API_KEY}/${req.query.lat},${req.query.long}` +
+  const forecastURL: string = `${config.urls.dark_sky}${WEATHER_API_KEY}/${req.query.lat},${req.query.long}` +
     `?exclude=hourly,minutely&units=si`;
 
   requestLib(forecastURL, { json: true }, (error: any, response: any, body: any) => {

@@ -2,9 +2,9 @@ import * as moment from 'moment';
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import { FlickrOptions } from './../../core/interfaces';
 import { UserPosition } from './../../core/models';
 import { GeoLocatorService } from './../../core/services';
+import { FlickrOptions } from './../interfaces';
 import { FlickrData, WeatherData } from './../models';
 import { FlickrService, GeoLocation, WeatherService } from './../services';
 
@@ -61,13 +61,13 @@ import { FlickrService, GeoLocation, WeatherService } from './../services';
 })
 
 export class WorksWeatherComponent extends Vue {
-  public backgroundWeatherImage: string = '';
+  public backgroundWeatherImage: string | null = null;
   public loadingWeather: boolean = false;
   public loadWeather: { display: boolean, message: string } = {
     display: false,
     message: 'Click here to load weather',
   };
-  public weatherData: WeatherData = null;
+  public weatherData: WeatherData | null = null;
 
   private weatherService = new WeatherService();
   private geolocationService = new GeoLocatorService();
