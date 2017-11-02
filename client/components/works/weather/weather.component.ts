@@ -53,8 +53,7 @@ import { FlickrService, GeoLocation, WeatherService } from './../services';
         </main>
 
         <div class="text-center load-weather" v-if="loadWeather.display">
-          <p v-on:click="setBackgroundImage()" class="weather-loader">load images</p>
-          <!-- <p v-on:click="clientGetWeather()" class="weather-loader">{{ loadWeather.message }}</p> -->
+          <p v-on:click="clientGetWeather()" class="weather-loader">{{ loadWeather.message }}</p>
         </div>
       </section>
     </main>
@@ -62,7 +61,7 @@ import { FlickrService, GeoLocation, WeatherService } from './../services';
 })
 
 export class WorksWeatherComponent extends Vue {
-  public backgroundWeatherImage: string;
+  public backgroundWeatherImage: string = '';
   public loadingWeather: boolean = false;
   public loadWeather: { display: boolean, message: string } = {
     display: false,
@@ -91,39 +90,8 @@ export class WorksWeatherComponent extends Vue {
           lat: location.coords.latitude,
           long: location.coords.longitude,
         };
-
-        this.weatherService.getWeather(coordinates).then((weatherData: WeatherData) => {
-          if (!weatherData.success) {
-            this.loadWeather.display = true;
-            this.loadWeather.message = 'There was an error getting the weather';
-          } else {
-            this.weatherData = new WeatherData(weatherData);
-            if (this.weatherData.success) {
-              this.loadingWeather = false;
-            }
-          }
-        });
+        this.getWeather(coordinates);
       }
-    });
-  }
-
-  public setBackgroundImage(weatherTags: string) {
-    const flickerOptions: FlickrOptions = {
-      tags: weatherTags || 'wet',
-      safe_search: '1',
-      content_type: '1',
-      media: 'photos',
-      geo_context: '2',
-    };
-
-    this.flickrService.getImages(flickerOptions).then((load) => {
-      const data = new FlickrData(load.data);
-      const randomImage = data.photos.photo.find((photo, index, array) => {
-        return index === Math.floor(Math.random() * array.length);
-      });
-      this.backgroundWeatherImage = `url("https://c1.staticflickr.com/${randomImage.farm}/${randomImage.server}/${randomImage.id}_${randomImage.secret}.jpg")`;
-      console.log('randomImage:', randomImage);
-      console.log('this.backgroundWeatherImage:', this.backgroundWeatherImage);
     });
   }
 
@@ -140,6 +108,44 @@ export class WorksWeatherComponent extends Vue {
 
   private mounted() {
     this.autoLoadWeather();
+  }
+
+  private getWeather(coordinates: GeoLocation) {
+    this.weatherService.getWeather(coordinates).then((weatherData: WeatherData) => {
+      if (!weatherData.success) {
+        this.loadWeather.display = true;
+        this.loadWeather.message = 'There was an error getting the weather';
+      } else {
+        if (weatherData.success) {
+          this.weatherData = new WeatherData(weatherData);
+          this.loadingWeather = false;
+          this.setBackgroundImage(this.weatherData.data.currently.icon);
+        }
+      }
+    });
+  }
+
+  private setBackgroundImage(weatherTags: string) {
+    const flickerOptions: FlickrOptions = {
+      tags: weatherTags.replace(/-/g, '+'),
+      safe_search: '1',
+      content_type: '1',
+      media: 'photos',
+    };
+
+    this.flickrService.getImages(flickerOptions).then((load) => {
+      if (load.success) {
+        const data = new FlickrData(load.data);
+        const randomNumber = Math.floor(Math.random() * data.photos.photo.length);
+        const randomImage = data.photos.photo.find((photo, index, array) => index === randomNumber);
+
+        this.backgroundWeatherImage = randomImage ?
+          'linear-gradient(to right,rgba(0,0,0, 0.35),rgba(0,0,0, 0.15)), ' +
+          `url("https://c1.staticflickr.com/${randomImage.farm}/` +
+          `${randomImage.server}/${randomImage.id}_${randomImage.secret}.jpg")` :
+          'linear-gradient(to right,rgba(0,0,0, 0.25),rgba(0,0,0, 0.05))';
+      }
+    });
   }
 
   private autoLoadWeather() {

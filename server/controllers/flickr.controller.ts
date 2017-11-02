@@ -10,14 +10,15 @@ export function GetFlickrImage(req: Request, res: Response, next: NextFunction) 
     return res.status(400).json({ error: 'Must include tags for search' });
   }
 
-  const flickerRequestOptions = Object.assign(req.query, {
+  const flickerRequestOptions = stringify(Object.assign(req.query, {
     api_key: process.env.FLICKR_API_KEY || config.keys.flickr,
     method: 'flickr.photos.search',
     format: 'json',
     nojsoncallback: '1',
-  });
+  }));
 
-  const parsedflickrURL = `${config.urls.flickr}services/rest/${unescape('?')}${stringify(flickerRequestOptions)}`;
+  const parsedflickrURL = `${config.urls.flickr}services/rest/${unescape('?')}` +
+    `${flickerRequestOptions.replace(/%2B/g, '+')}`;
 
   requestLib(parsedflickrURL, (error: any, response: any, body: any) => {
     if (error) {

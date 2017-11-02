@@ -18,7 +18,7 @@
     }
 
     @include grid-media($desktop-up) {
-      width: 45rem;
+      width: 50rem;
     }
   }
 
@@ -53,8 +53,12 @@
 
   .weather-data-header {
     background-color: crimson;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     height: 10rem;
     position: relative;
+    transition: background-image 2s ease-in;
 
     .weather-data-font {
       color: white;

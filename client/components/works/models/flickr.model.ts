@@ -13,19 +13,19 @@ export class FlickrPhotosResponse {
   public pages: number;
   public perpage: number;
   public total: number;
-  public photo: FlickrPhotos[];
+  public photo: FlickrPhoto[];
 
   constructor(obj?: any) {
     this.page = obj && obj.page || null;
     this.pages = obj && obj.pages || null;
     this.perpage = obj && obj.perpage || null;
     this.total = obj && obj.total || null;
-    this.photo = obj && obj.photo.map((p) => new FlickrPhotos(p)) || [];
+    this.photo = obj && obj.photo.map((p: FlickrPhoto) => new FlickrPhoto(p)) || [];
   }
 
 }
 
-export class FlickrPhotos {
+export class FlickrPhoto {
   public id: string;
   public owner: string;
   public secret: string;
