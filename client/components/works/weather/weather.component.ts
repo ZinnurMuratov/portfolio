@@ -61,13 +61,13 @@ import { FlickrService, GeoLocation, WeatherService } from './../services';
 })
 
 export class WorksWeatherComponent extends Vue {
-  public backgroundWeatherImage: string = '';
+  public backgroundWeatherImage: string | null = null;
   public loadingWeather: boolean = false;
   public loadWeather: { display: boolean, message: string } = {
     display: false,
     message: 'Click here to load weather',
   };
-  public weatherData: WeatherData = null;
+  public weatherData: WeatherData | null = null;
 
   private weatherService = new WeatherService();
   private geolocationService = new GeoLocatorService();
