@@ -6,8 +6,11 @@ import Component from 'vue-class-component';
     <main class="dashboard-component main-layout-hero">
       <ul class="works-list">
         <li class="works-list-item" v-for="work in works">
-          <a v-bind:href="work.url" class="works-list-item-anchor">
-            <img :src="work.thumbnail" class="works-list-image">
+          <a
+            v-bind:href="work.url"
+            :style="{'background-image': thumbnailOverlay + work.thumbnailUrl}"
+            class="works-list-item-anchor">
+            <p class="works-list-title">{{ work.title }}</p>
           </a>
         </li>
       </ul>
@@ -16,15 +19,18 @@ import Component from 'vue-class-component';
 })
 
 export class WorksDashboardComponent extends Vue {
+  public thumbnailOverlay: string = 'linear-gradient(to right,rgba(0,0,0, 0.25),rgba(0,0,0, 0.25)), ';
   public works: IWorks[] = [
     {
       url: '/works/weather',
-      thumbnail: '/images/misc/loading.gif',
+      title: 'Weather App',
+      thumbnailUrl: 'url("/images/works/weather-app/thumbnail.png")',
     },
   ];
 }
 
 export interface IWorks {
   url: string;
-  thumbnail: string;
+  thumbnailUrl: string;
+  title: string;
 }

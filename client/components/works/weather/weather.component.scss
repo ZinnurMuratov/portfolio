@@ -56,7 +56,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    height: 10rem;
+    height: 15rem;
     position: relative;
     transition: background-image 2s ease-in;
 
@@ -69,7 +69,7 @@
     }
 
     @include grid-media($desktop-up) {
-      height: 15rem;
+      height: 20rem;
     }
   }
 
