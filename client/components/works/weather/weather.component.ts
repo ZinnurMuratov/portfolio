@@ -2,9 +2,9 @@ import * as moment from 'moment';
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import { FlickrOptions } from './../../core/interfaces';
 import { UserPosition } from './../../core/models';
 import { GeoLocatorService } from './../../core/services';
+import { FlickrOptions } from './../interfaces';
 import { FlickrData, WeatherData } from './../models';
 import { FlickrService, GeoLocation, WeatherService } from './../services';
 

@@ -14,5 +14,6 @@ export const config = {
   urls: {
     dark_sky: 'https://api.darksky.net/forecast/',
     flickr: 'https://api.flickr.com/',
+    talaikis: 'https://talaikis.com/api/quotes/random',
   },
 };
