@@ -50,7 +50,7 @@ export class HomeComponent extends Vue {
 
   private mounted() {
     this.initRandomBackground();
-    this.getRandomQuote();
+    // this.getRandomQuote();
     window.setTimeout(() => { this.headerColor = 'white'; }, 0);
   }
 
