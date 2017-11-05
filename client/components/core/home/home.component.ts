@@ -55,6 +55,7 @@ export class HomeComponent extends Vue {
   }
 
   private beforeDestroy() {
+    this.$emit('randomBackground', 'rgba(0,0,0,0)');
     window.clearInterval(this.backgroundTimeout);
   }
 
@@ -76,6 +77,7 @@ export class HomeComponent extends Vue {
       };
 
       this.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+      this.$emit('randomBackground', this.backgroundColor);
     }, this.timeoutTimer);
   }
 }

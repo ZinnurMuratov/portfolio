@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
 @Component({
   template: `
-    <footer class="footer-component">
+    <footer
+      :style="{'background-color': backgroundColor}"
+      class="footer-component">
       <div class="container">
         <section class="footer-section">
           <ul class="flat-list center">
@@ -23,6 +26,8 @@ import Component from 'vue-class-component';
 })
 
 export class FooterComponent extends Vue {
+  @Prop() public backgroundColor: string;
+
   public socialLinks: SocialLinks[] = [
     {
       url: 'https://github.com/dannyk08',

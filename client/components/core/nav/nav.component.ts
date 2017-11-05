@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
 @Component({
   template: `
-    <nav class="navigation-component">
+    <nav
+      :style="{'background-color': backgroundColor}"
+      class="navigation-component">
       <div class="container">
         <section class="nav-section">
           <ul class="flat-list right navigation-links">
@@ -20,5 +23,5 @@ import Component from 'vue-class-component';
   `,
 })
 export class NavComponent extends Vue {
-  //
+  @Prop() public backgroundColor: string;
 }
