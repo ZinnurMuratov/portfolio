@@ -23,7 +23,7 @@ export function GetWeather(req: GeoLookupRequest, res: Response, next: NextFunct
   requestLib(forecastURL(coordinates.lat, coordinates.long), {
     json: true,
   }, (error: any, response: any, body: any) => {
-    const load = {
+    const load: any = {
       data: null,
       success: false,
       geolookup: geolookup ? geolookup : null,

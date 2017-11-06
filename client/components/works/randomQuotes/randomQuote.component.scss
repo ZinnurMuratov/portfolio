@@ -1,0 +1,31 @@
+.quote-component {
+
+  .random-quote {
+    @include grid-column(12);
+    transition: 1s ease-in-out;
+    
+    @include grid-media($tablet-up) {
+      @include grid-column(8);
+      @include grid-push(2);
+    }
+    
+    .quote-text {
+      color: $white;
+      display: inline-block;
+      width: 100%;
+
+      @include grid-media($mobile-only) {
+        text-align: center;
+      }
+    }
+
+    .random-quote-quote {
+      margin-top: 2rem;
+      font-style: italic;
+      font-size: .85rem;
+    }
+    .random-quote-author {
+      margin-top: 1rem;
+    }
+  }
+}

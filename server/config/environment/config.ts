@@ -16,7 +16,7 @@ export const config = {
     dark_sky: 'https://api.darksky.net/forecast/',
     // https://www.flickr.com/services/api/
     flickr: 'https://api.flickr.com/',
-    // https://quotes.rest/#!/qod/get_qod
-    quotes: 'https://quotes.rest/qod',
+    // http://quotes.stormconsultancy.co.uk/api
+    quotes: 'http://quotes.stormconsultancy.co.uk/quotes/1.json',
   },
 };

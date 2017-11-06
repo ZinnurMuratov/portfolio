@@ -26,6 +26,10 @@ export class WorksDashboardComponent extends Vue {
       url: '/works/weather',
       title: 'Weather App',
     },
+    {
+      url: '/works/quotes',
+      title: 'Random Quotes',
+    },
   ];
 
   public randomColor(): string {

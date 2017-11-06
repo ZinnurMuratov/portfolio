@@ -10,25 +10,4 @@
   .color-transition {
     transition: color 2s ease-in;
   }
-
-  .random-quote {
-    @include grid-column(12);
-    transition: 1s ease-in-out;
-    
-    @include grid-media($tablet-up) {
-      @include grid-column(8);
-      @include grid-push(2);
-    }
-    
-    .random-quote-quote {
-      margin-top: 2rem;
-      font-style: italic;
-      font-size: .85rem;
-    }
-    .random-quote-author {
-      margin-top: 1rem;
-    }
-  }
-
-
 }
