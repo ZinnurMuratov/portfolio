@@ -25,7 +25,7 @@ export class HomeComponent extends Vue {
   public headerColor: string = 'rgba(0,0,0,0)';
 
   private backgroundTimeout: number;
-  private timeoutTimer: number = 3000;
+  private timeoutTimer: number = 7500;
   private toggledTimer: boolean = false;
 
   public toggleRandomBackground() {

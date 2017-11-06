@@ -58,6 +58,7 @@
     "@types/vue-resource": "0.9.34",
     "awesome-typescript-loader": "3.3.0",
     "colors": "1.1.2",
+    "compression-webpack-plugin": "^1.0.1",
     "concurrently": "3.5.0",
     "css-loader": "0.28.7",
     "del": "3.0.0",
@@ -102,6 +103,8 @@
     "uglifyjs-webpack-plugin": "1.0.1",
     "vue-loader": "13.3.0",
     "vue-template-compiler": "2.5.2",
-    "webpack": "2.6.1"
+    "webpack": "2.6.1",
+    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-closure-compiler": "^2.1.5"
   }
 }
