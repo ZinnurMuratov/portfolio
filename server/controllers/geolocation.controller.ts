@@ -5,7 +5,6 @@ import { v4 as ipV4 } from 'public-ip';
 import { GeoLookupRequest } from './../config/interfaces';
 
 export function GetGeolocation(req: GeoLookupRequest, res: Response, next: NextFunction) {
-  // also change quote api
   if (req.query.lat && req.query.long) {
     return next();
   }
