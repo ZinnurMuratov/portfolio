@@ -56,10 +56,6 @@
   version "1.1.29"
   resolved "https://registry.yarnpkg.com/@types/geoip-lite/-/geoip-lite-1.1.29.tgz#c2c4cecc49d988d8816b8be006c08f211103351b"
 
-"@types/ip@0.0.30":
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/@types/ip/-/ip-0.0.30.tgz#60c3309ce1cecdd7293245bbffc201ecb6f8c344"
-
 "@types/mime@*":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.0.tgz#5a7306e367c539b9f6543499de8dd519fac37a8b"
@@ -73,6 +69,10 @@
 "@types/node@*", "@types/node@8.0.47":
   version "8.0.47"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.47.tgz#968e596f91acd59069054558a00708c445ca30c2"
+
+"@types/public-ip@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@types/public-ip/-/public-ip-2.3.0.tgz#8ef497b09e52455ab24f753b17e6703bb6baaebf"
 
 "@types/request@2.0.7":
   version "2.0.7"
@@ -1663,6 +1663,19 @@ diffie-hellman@^5.0.0:
     bn.js "^4.1.0"
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
+
+dns-packet@^1.1.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/dns-packet/-/dns-packet-1.2.2.tgz#a8a26bec7646438963fc86e06f8f8b16d6c8bf7a"
+  dependencies:
+    ip "^1.1.0"
+    safe-buffer "^5.0.1"
+
+dns-socket@^1.6.1:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/dns-socket/-/dns-socket-1.6.2.tgz#c234432288c3c76cc131f4157faf7423a662304c"
+  dependencies:
+    dns-packet "^1.1.0"
 
 doctrine@1.5.0, doctrine@^1.2.2:
   version "1.5.0"
@@ -3624,7 +3637,11 @@ ip-regex@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-1.0.3.tgz#dc589076f659f419c222039a33316f1c7387effd"
 
-ip@1.1.5:
+ip-regex@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-2.1.0.tgz#fa78bf5d2e6913c911ce9f819ee5146bb6d844e9"
+
+ip@^1.1.0:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
 
@@ -3773,6 +3790,12 @@ is-installed-globally@^0.1.0:
   dependencies:
     global-dirs "^0.1.0"
     is-path-inside "^1.0.0"
+
+is-ip@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-ip/-/is-ip-2.0.0.tgz#68eea07e8a0a0a94c2d080dd674c731ab2a461ab"
+  dependencies:
+    ip-regex "^2.0.0"
 
 is-jpg@^1.0.0:
   version "1.0.0"
@@ -5718,6 +5741,15 @@ public-encrypt@^4.0.0:
     create-hash "^1.1.0"
     parse-asn1 "^5.0.0"
     randombytes "^2.0.1"
+
+public-ip@2.3.5:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/public-ip/-/public-ip-2.3.5.tgz#7d7847625881576ba7a1fa410b0978df239bdf75"
+  dependencies:
+    dns-socket "^1.6.1"
+    got "^6.7.1"
+    is-ip "^2.0.0"
+    pify "^2.3.0"
 
 "pullstream@>= 0.4.1 < 1":
   version "0.4.1"

@@ -26,14 +26,15 @@ import { FlickrService, GeoLocation, WeatherService } from './../services';
                   {{ timeFetched(weatherData.data.currently.time).date }}
                 </span>
               </h4>
-              <h5 class="weather-data-font">{{ weatherData.data.timezone }}</h5>
+              <h5 class="weather-data-font">{{ cityLocation }}</h5>
             </div>
           </header>
           <footer class="weather-data-footer">
             <ul class="weather-data-weekly-cast">
               <li v-for="dailyWeather in weatherData.data.daily.data.slice(1, 8)">
                 <div class="day-of-the-week">
-                  {{ timeFetched(dailyWeather.time).dayOfWeek }}
+                  {{ timeFetched(dailyWeather.time).dayOfWeek }}, {{timeFetched(dailyWeather.time).day}}
+
                 </div>
                 <div class="weather-info">
                   <p class="weather-info-temp">
@@ -68,6 +69,7 @@ export class WorksWeatherComponent extends Vue {
     message: 'Click here to load weather',
   };
   public weatherData: WeatherData | null = null;
+  public cityLocation: string;
 
   private weatherService = new WeatherService();
   private geolocationService = new GeoLocatorService();
@@ -110,11 +112,22 @@ export class WorksWeatherComponent extends Vue {
     this.autoLoadWeather();
   }
 
-  private getWeather(coordinates: GeoLocation) {
-    this.weatherService.getWeather(coordinates).then((weatherData: WeatherData) => {
+  private autoLoadWeather() {
+    this.loadingWeather = true;
+    this.getWeather();
+  }
+
+  private getWeather(coordinates?: GeoLocation) {
+    this.weatherService.getWeather(coordinates ? coordinates : null).then((weatherData) => {
+      if (weatherData.geolookup) {
+        this.cityLocation = `${weatherData.geolookup.city}, ${weatherData.geolookup.region}`;
+      } else {
+        this.cityLocation = weatherData.data.timezone;
+      }
+
       if (!weatherData.success) {
         this.loadWeather.display = true;
-        this.loadWeather.message = 'There was an error getting the weather';
+        this.loadWeather.message = 'There was an error getting the weather. Please try again';
       } else {
         if (weatherData.success) {
           this.weatherData = new WeatherData(weatherData);
@@ -148,21 +161,6 @@ export class WorksWeatherComponent extends Vue {
     });
   }
 
-  private autoLoadWeather() {
-    this.loadWeather.display = true;
-    //   this.weatherService.getWeather().then((res) => {
-    //     console.log('getWeather:', res);
-    //     if (!res) {
-    //       this.showClickMessage = true;
-    //       this.currentWeather = {};
-    //     }
-    //     this.currentWeather = res;
-    //   }, (err) => {
-    //     console.error(err);
-    //     this.currentWeather = {};
-    //     this.showClickMessage = true;
-    //   });
-  }
 }
 
 export interface MomentDate {

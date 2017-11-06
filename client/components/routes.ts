@@ -5,6 +5,7 @@ import { HomeComponent } from './core';
 import {
   WorksDashboardComponent,
   WorksMainComponent,
+  WorksQuotesComponent,
   WorksWeatherComponent,
 } from './works';
 
@@ -17,6 +18,7 @@ const routes: RouteConfig[] = [
     children: [
       { path: 'dashboard', component: WorksDashboardComponent },
       { path: 'weather', component: WorksWeatherComponent },
+      { path: 'quotes', component: WorksQuotesComponent },
     ],
     redirect: '/works/dashboard',
   }, { path: '*', redirect: '/' },

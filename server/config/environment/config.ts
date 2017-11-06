@@ -12,8 +12,11 @@ export const config = {
     flickr: keys.flickr_api,
   },
   urls: {
+    // https://darksky.net/dev/account
     dark_sky: 'https://api.darksky.net/forecast/',
+    // https://www.flickr.com/services/api/
     flickr: 'https://api.flickr.com/',
-    talaikis: 'https://talaikis.com/api/quotes/random',
+    // http://quotes.stormconsultancy.co.uk/api
+    quotes: 'http://quotes.stormconsultancy.co.uk/quotes/',
   },
 };
