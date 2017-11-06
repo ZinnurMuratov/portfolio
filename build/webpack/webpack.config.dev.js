@@ -1,5 +1,6 @@
 'use strict';
 const helpers = require('./helper.methods');
+const BundlerAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   context: helpers.root('.'),
@@ -49,6 +50,7 @@ module.exports = {
       'vue-router$': 'vue-router/dist/vue-router.esm.js'
     }
   },
+  plugins: [new BundlerAnalyzerPlugin()],
   watch: true,
   watchOptions: {
     aggregateTimeout: 300,
