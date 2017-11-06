@@ -1,12 +1,11 @@
 import { VueResourceModel } from './../../core/models';
 
 export class WeatherService extends VueResourceModel {
-  // make this call dependent on geolocation
-  public getWeather(geolocation: GeoLocation) {
+  public getWeather(geolocation?: GeoLocation | null) {
     const getWeatherOptions = {
       params: {
-        lat: geolocation.lat,
-        long: geolocation.long,
+        lat: geolocation ? geolocation.lat : null,
+        long: geolocation ? geolocation.long : null,
       },
       method: 'GET',
       url: '/api/getWeather',
