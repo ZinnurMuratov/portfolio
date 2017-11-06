@@ -17,6 +17,6 @@ export const config = {
     // https://www.flickr.com/services/api/
     flickr: 'https://api.flickr.com/',
     // http://quotes.stormconsultancy.co.uk/api
-    quotes: 'http://quotes.stormconsultancy.co.uk/quotes/1.json',
+    quotes: 'http://quotes.stormconsultancy.co.uk/quotes/',
   },
 };

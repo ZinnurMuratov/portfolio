@@ -11,8 +11,6 @@
     
     .quote-text {
       color: $white;
-      display: inline-block;
-      width: 100%;
 
       @include grid-media($mobile-only) {
         text-align: center;
@@ -26,6 +24,20 @@
     }
     .random-quote-author {
       margin-top: 1rem;
+    }
+
+
+    .quote-actions {
+      margin-top: 1rem;
+      
+      .quote-actions-item a {
+        text-decoration: none;
+        cursor: pointer;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

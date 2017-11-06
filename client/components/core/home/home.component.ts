@@ -25,7 +25,7 @@ export class HomeComponent extends Vue {
   public headerColor: string = 'rgba(0,0,0,0)';
 
   private backgroundTimeout: number;
-  private timeoutTimer: number = 2750;
+  private timeoutTimer: number = 3000;
   private toggledTimer: boolean = false;
 
   public toggleRandomBackground() {
@@ -34,8 +34,14 @@ export class HomeComponent extends Vue {
   }
 
   private mounted() {
-    this.initRandomBackground();
-    window.setTimeout(() => { this.headerColor = 'white'; }, 0);
+    window.setTimeout(() => {
+      this.initRandomBackground();
+      this.headerColor = 'white';
+    }, 0);
+
+    this.backgroundTimeout = window.setInterval(() => {
+      this.initRandomBackground();
+    }, this.timeoutTimer);
   }
 
   private beforeDestroy() {
@@ -44,16 +50,14 @@ export class HomeComponent extends Vue {
   }
 
   private initRandomBackground() {
-    this.backgroundTimeout = window.setInterval(() => {
-      const rgba: RGBA = {
-        r: Math.floor(Math.random() * 255),
-        b: Math.floor(Math.random() * 255),
-        g: Math.floor(Math.random() * 255),
-        a: (Math.random() * 1).toFixed(2),
-      };
+    const rgba: RGBA = {
+      r: Math.floor(Math.random() * 255),
+      b: Math.floor(Math.random() * 255),
+      g: Math.floor(Math.random() * 255),
+      a: (Math.random() * 1).toFixed(2),
+    };
 
-      this.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
-      this.$emit('randomBackground', this.backgroundColor);
-    }, this.timeoutTimer);
+    this.backgroundColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+    this.$emit('randomBackground', this.backgroundColor);
   }
 }
