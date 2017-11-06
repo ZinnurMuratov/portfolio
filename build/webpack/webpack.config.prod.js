@@ -1,5 +1,6 @@
 const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const ClosureCompilerPlugin = require('webpack-closure-compiler');
 
 const helpers = require('./helper.methods');
 
@@ -52,11 +53,39 @@ module.exports = {
     }
   },
   plugins: [
-    new UglifyJSPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
+      compress: {
+        warnings: false, // Suppress uglification warnings
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        screw_ie8: true
+      },
+      output: {
+        comments: false,
+      },
+      exclude: [/\.min\.js$/gi]
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
       }
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|.html|/,
+      threshold: 10240,
+      minRatio: 0
+    }),
+    new ClosureCompilerPlugin({
+      compiler: {
+        language_in: 'ECMASCRIPT6',
+        language_out: 'ECMASCRIPT5',
+        compilation_level: 'ADVANCED'
+      },
+      concurrency: 3,
     })
   ]
 };
