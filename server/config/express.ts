@@ -1,5 +1,6 @@
 import * as compression from 'compression';
 import { Application, Request, Response, static as ExpressStatic } from 'express';
+import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import { join, resolve } from 'path';
 
@@ -16,6 +17,7 @@ export function startExpress(app: Application) {
   }
 
   if (config.prod) {
+    app.use(helmet());
     app.use(compression());
     app.use(morgan('common'));
   }

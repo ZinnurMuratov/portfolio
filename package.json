@@ -35,6 +35,7 @@
     "ejs": "2.5.7",
     "express": "4.16.2",
     "geoip-lite": "1.2.1",
+    "helmet": "^3.9.0",
     "moment": "2.19.1",
     "morgan": "1.9.0",
     "public-ip": "2.3.5",

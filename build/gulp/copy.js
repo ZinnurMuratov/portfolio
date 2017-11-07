@@ -18,7 +18,7 @@ gulp.task('copy:ejs', () => {
       starttag: '<%# startinject:js %>',
       endtag: '<%# endinject:js %>',
       transform: (filePath) => {
-        return `<script src="${filePath.replace('/.dist/client', '')}"></script>`;
+        return `<script src="${filePath.replace('/.dist/client', '')}" async></script>`;
       }
     })))
     .pipe(gulpIf(config.prod, inject(cssSources, {
