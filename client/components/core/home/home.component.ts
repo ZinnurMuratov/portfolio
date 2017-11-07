@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import { RGBA } from './../../works/interfaces';
+import { seo } from './../services';
 
 @Component({
   template: `
@@ -18,6 +19,8 @@ import { RGBA } from './../../works/interfaces';
       </main>
     </section>
   `,
+  name: seo.home.name,
+  metaInfo: seo.home.metaInfo(),
 })
 
 export class HomeComponent extends Vue {

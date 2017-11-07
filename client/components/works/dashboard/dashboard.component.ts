@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+import { seo } from './../../core/services';
 import { RGBA } from './../interfaces';
 
 @Component({
@@ -18,6 +19,8 @@ import { RGBA } from './../interfaces';
       </ul>
     </main>
   `,
+  name: seo.works.name,
+  metaInfo: seo.works.metaInfo(),
 })
 
 export class WorksDashboardComponent extends Vue {

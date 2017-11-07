@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+import { seo } from './../../core/services';
 import { RandomQuoteContents } from './../interfaces';
 import { RandomQuoteService } from './../services';
 
@@ -27,6 +28,8 @@ import { RandomQuoteService } from './../services';
       </main>
     </section>
   `,
+  name: seo.randomQuotes.name,
+  metaInfo: seo.randomQuotes.metaInfo(),
 })
 
 export class WorksQuotesComponent extends Vue {

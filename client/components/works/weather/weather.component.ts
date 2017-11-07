@@ -3,7 +3,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import { UserPosition } from './../../core/models';
-import { GeoLocatorService } from './../../core/services';
+import { GeoLocatorService, seo } from './../../core/services';
 import { FlickrOptions } from './../interfaces';
 import { FlickrData, WeatherData } from './../models';
 import { FlickrService, GeoLocation, WeatherService } from './../services';
@@ -59,6 +59,8 @@ import { FlickrService, GeoLocation, WeatherService } from './../services';
       </section>
     </main>
   `,
+  name: seo.weather.name,
+  metaInfo: seo.weather.metaInfo(),
 })
 
 export class WorksWeatherComponent extends Vue {

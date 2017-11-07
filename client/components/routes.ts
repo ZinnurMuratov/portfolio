@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Meta from 'vue-meta';
 import VueRouter, { RouteConfig } from 'vue-router';
 
 import { HomeComponent } from './core';
@@ -10,6 +11,7 @@ import {
 } from './works';
 
 Vue.use(VueRouter);
+Vue.use(Meta);
 
 const routes: RouteConfig[] = [
   { path: '/', component: HomeComponent }, {
