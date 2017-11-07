@@ -6,7 +6,7 @@ const gulpRev = require('gulp-rev');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
-const cleanCSS = require('gulp-clean-css');
+const cssNano = require('gulp-cssnano');
 const moduleImporter = require('sass-module-importer');
 
 const config = require('./config');
@@ -22,7 +22,7 @@ gulp.task('sass', () => {
       browsers: ['last 2 versions'],
       cascade: false,
     })))
-    .pipe(gulpIf(config.prod, cleanCSS()))
+    .pipe(gulpIf(config.prod, cssNano()))
     .pipe(gulpIf(config.prod, gulpRev()))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(`${config.buildPath}/client/styles/`));

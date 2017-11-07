@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
-const ClosureCompilerPlugin = require('webpack-closure-compiler');
 
 const helpers = require('./helper.methods');
 
@@ -75,17 +74,9 @@ module.exports = {
     new CompressionPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
-      test: /\.js$|.html|/,
+      test: /\.js$|\.css$|.html$|/,
       threshold: 10240,
       minRatio: 0
     }),
-    new ClosureCompilerPlugin({
-      compiler: {
-        language_in: 'ECMASCRIPT6',
-        language_out: 'ECMASCRIPT5',
-        compilation_level: 'ADVANCED'
-      },
-      concurrency: 3,
-    })
   ]
 };
