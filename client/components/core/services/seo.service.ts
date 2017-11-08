@@ -7,7 +7,7 @@ export const seo = {
         meta: [
           {
             name: 'description',
-            content: 'Danny\'s IO is a Portfolio Website for Web Developer Daniel Romero who specializes in Front End Development.'
+            content: 'Danny\'s IO is a Portfolio Website for Web Developer Daniel Romero who specializes in Front End Development.',
           },
         ],
       };
@@ -51,5 +51,5 @@ export const seo = {
         ],
       };
     },
-  }
+  },
 };

@@ -8,3 +8,4 @@
 *.DS_Store
 
 *secret.ts
+*yarn-error.log

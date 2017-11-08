@@ -8,7 +8,7 @@ import { config } from './environment/config';
 import { IndexRouter } from './routes/index';
 
 export function startExpress(app: Application) {
-  app.enable('trust proxy');
+  app.set('trust proxy', (ip: string) => ip === '127.0.0.1' || ip === '123.123.123.123');
   app.set('view engine', 'ejs');
 
   if (!config.prod) {

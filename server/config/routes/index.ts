@@ -1,14 +1,17 @@
 import { Application, Router } from 'express';
 
-import { HandleCatchall, SendRoot } from './../../controllers';
-import apiRouter from './api';
-import baseRouter from './base';
+import { HandleCatchall, HandleRobots, HandleSitemap, SendRoot } from './../../controllers';
+import apiRoutes from './api';
+import baseRoutes from './base';
 
 export function IndexRouter(app: Application) {
   const router = Router();
 
-  app.use('/api', apiRouter);
-  app.use('/', baseRouter);
+  app.use('/robots.txt', HandleRobots);
+  app.use('/sitemap.xml', HandleSitemap);
+
+  app.use('/api', apiRoutes);
+  app.use('/', baseRoutes);
 
   router.route('*').get(HandleCatchall, SendRoot);
   app.use('', router);

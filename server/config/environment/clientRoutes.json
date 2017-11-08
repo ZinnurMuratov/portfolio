@@ -1,0 +1,29 @@
+{
+  "routes": [
+    {
+      "url": "/",
+      "changefreq": "weekly",
+      "priority": 0.5
+    },
+    {
+      "url": "/works/dashboard",
+      "changefreq": "weekly",
+      "priority": 0.5
+    },
+    {
+      "url": "/dashboard",
+      "changefreq": "weekly",
+      "priority": 0.5
+    },
+    {
+      "url": "/weather",
+      "changefreq": "weekly",
+      "priority": 0.5
+    },
+    {
+      "url": "/quotes",
+      "changefreq": "weekly",
+      "priority": 0.5
+    }
+  ]
+}
