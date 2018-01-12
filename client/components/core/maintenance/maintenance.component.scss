@@ -1,0 +1,33 @@
+.app-main {
+  background-color: rgba(224, 231, 218, 0.88); 
+}
+
+.maintenance-component {  
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  .maintenance-content {}
+
+  .message {
+    text-align: center;
+   }
+
+  .progress-bar {
+    height: .25rem;
+    width: 25rem;
+    background-color: white;
+    margin: 1rem auto 0;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background-color: coral;
+    transition: width .5s linear;
+  }
+  .progress-bar-meter {
+    text-align: center;
+    margin-top: .5rem;
+  }
+}
