@@ -1,7 +1,11 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import { FooterComponent, NavComponent } from './components/core';
+import {
+  FooterComponent,
+  MaintenanceComponent,
+  NavComponent,
+} from './components/core';
 import router from './components/routes';
 
 @Component({
@@ -24,11 +28,18 @@ export class App extends Vue {
   }
 }
 
-const app = new App({
+// const app = new App({
+//   el: '#main-app',
+//   router,
+//   components: {
+//     FooterComponent,
+//     NavComponent,
+//   },
+// });
+
+const app = new MaintenanceComponent({
   el: '#main-app',
-  router,
   components: {
     FooterComponent,
-    NavComponent,
   },
 });

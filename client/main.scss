@@ -1,4 +1,7 @@
+$fa-font-path: './../fonts';
+
 @import 'bourbon-neat/core/_neat.scss';
+@import 'font-awesome/scss/font-awesome.scss';
 
 @import 'assets/styles/frame.scss';
 
@@ -6,6 +9,7 @@
 @import 'components/app.scss';
 @import 'components/core/footer/footer.component.scss';
 @import 'components/core/home/home.component.scss';
+@import 'components/core/maintenance/maintenance.component.scss';
 @import 'components/core/nav/nav.component.scss';
 @import 'components/works/dashboard/dashboard.component.scss';
 @import 'components/works/main/main.component.scss';
