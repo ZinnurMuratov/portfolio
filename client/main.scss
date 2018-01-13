@@ -1,4 +1,7 @@
+$fa-font-path: './../fonts';
+
 @import 'bourbon-neat/core/_neat.scss';
+@import 'font-awesome/scss/font-awesome.scss';
 
 @import 'assets/styles/frame.scss';
 

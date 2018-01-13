@@ -16,13 +16,19 @@
     padding-right: 1.5rem; 
   }
 
-  .social-icon img {
-    max-height: 1.5rem;
-    max-width: 1.5rem;
+  .social-icon {
+    i {
+      font-size: 1.5rem;
+    }
 
-    @include grid-media($tablet-up) {
-      max-height: 32px;
-      max-width: 32px;
+    img {
+      max-height: 1.5rem;
+      max-width: 1.5rem;
+
+      @include grid-media($tablet-up) {
+        max-height: 32px;
+        max-width: 32px;
+      }
     }
   }
   

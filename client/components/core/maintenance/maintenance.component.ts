@@ -12,11 +12,11 @@ import { FooterComponent } from './../../core';
             <div class="progress-bar-fill" :style="{ 'width': progressPercentage + '%' }" ></div>
             <p class="progress-bar-meter">site completion: {{progressPercentage}}%</p>
           </div>
+          <footer-component :backgroundColor="backgroundColor"></footer-component>
         </main>
       </div>
     </div>
   `,
-  // <footer-component :backgroundColor="backgroundColor"></footer-component>
 })
 
 export class MaintenanceComponent extends Vue {

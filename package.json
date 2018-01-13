@@ -34,6 +34,7 @@
     "compression": "1.7.1",
     "ejs": "2.5.7",
     "express": "4.16.2",
+    "font-awesome": "4.7.0",
     "geoip-lite": "1.2.1",
     "helmet": "^3.9.0",
     "moment": "2.19.1",
