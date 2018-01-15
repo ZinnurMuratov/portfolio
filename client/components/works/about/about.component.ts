@@ -3,10 +3,10 @@ import Component from 'vue-class-component';
 
 @Component({
   template: `
-    <main class="resume-component">
+    <main class="about-component">
       <div class="container">
         <h1 class="">
-          Resume
+          About
         </h1>
       </div>
     </main>
@@ -15,12 +15,13 @@ import Component from 'vue-class-component';
   // metaInfo: seo.works.metaInfo(),
 })
 
-export class ResumeComponent extends Vue {
+export class AboutComponent extends Vue {
   constructor(obj: any) {
     super(obj);
   }
 
   private beforeDestroy() {
+    this.$emit('randomBackground', '#2A292D');
     this.$emit('setVisibility', {
       visibleNav: true,
       visibleFooter: true,

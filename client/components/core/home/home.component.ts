@@ -7,7 +7,6 @@ import { seo } from './../services';
 @Component({
   template: `
     <section
-      :style="{ 'background-color': backgroundColor }"
       v-on:click="toggleRandomBackground()"
       class="home-component section-full vertical-align">
 
@@ -28,28 +27,38 @@ export class HomeComponent extends Vue {
   public headerColor: string = '#2A292D';
 
   private backgroundTimeout: number;
-  private timeoutTimer: number = 7500;
+  private timeoutTimer: number = 6000;
   private toggledTimer: boolean = false;
 
   public toggleRandomBackground() {
-    this.toggledTimer ? this.initRandomBackground() : window.clearInterval(this.backgroundTimeout);
+    this.toggledTimer ? this.initRandomizerInterval() : window.clearInterval(this.backgroundTimeout);
     this.toggledTimer = !this.toggledTimer;
   }
 
+  // figure out why on click won't restart the interval
+  // look into creating random shapes with svgs - rect & circles
+  // look into how to download resume in various formats
+  // could integrate google docs and set api to download directly from portfolio website
+  // write out About page
+
   private mounted() {
     window.setTimeout(() => {
-      this.initRandomBackground();
       this.headerColor = 'white';
+      this.initRandomizerInterval();
     }, 0);
 
-    this.backgroundTimeout = window.setInterval(() => {
-      this.initRandomBackground();
-    }, this.timeoutTimer);
   }
 
   private beforeDestroy() {
     this.$emit('randomBackground', '#2A292D');
     window.clearInterval(this.backgroundTimeout);
+  }
+
+  private initRandomizerInterval() {
+    this.initRandomBackground();
+    this.backgroundTimeout = window.setInterval(() => {
+      this.initRandomBackground();
+    }, this.timeoutTimer);
   }
 
   private initRandomBackground() {

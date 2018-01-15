@@ -7,7 +7,7 @@ import {
   MaintenanceComponent,
 } from './core';
 import {
-  ResumeComponent,
+  AboutComponent,
   WorksDashboardComponent,
   WorksMainComponent,
   WorksQuotesComponent,
@@ -19,7 +19,7 @@ Vue.use(Meta);
 
 const routes: RouteConfig[] = [
   {
-    path: '/about', component: ResumeComponent,
+    path: '/about', component: AboutComponent,
   }, {
     path: '/works',
     component: WorksMainComponent,
@@ -30,8 +30,8 @@ const routes: RouteConfig[] = [
     ],
     redirect: '/works/dashboard',
   }, {
-    // path: '/', component: HomeComponent,
-    path: '/', component: MaintenanceComponent,
+    path: '/', component: HomeComponent,
+    // path: '/', component: MaintenanceComponent,
   }, {
     path: '*', redirect: '/',
   },
