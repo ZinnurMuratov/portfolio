@@ -10,22 +10,18 @@ import { FooterComponent } from './../../core';
           <h1 class="message">UNDER CONSTRUCTION</h1>
           <div class="progress-bar">
             <div class="progress-bar-fill" :style="{ 'width': progressPercentage + '%' }" ></div>
+            </div>
             <p class="progress-bar-meter">site completion: {{progressPercentage}}%</p>
-          </div>
-          <footer-component :backgroundColor="backgroundColor"></footer-component>
         </main>
+        <footer-component></footer-component>
       </div>
     </div>
   `,
+  components: { FooterComponent },
 })
 
 export class MaintenanceComponent extends Vue {
-  public backgroundColor: string = 'rgba(224, 231, 218, 0.88)';
   public progressPercentage: number = 0;
-
-  public backgroundColorMatch(val: string) {
-    this.backgroundColor = val;
-  }
 
   public initBarProgress() {
     const timeout = setInterval(() => {
@@ -34,10 +30,22 @@ export class MaintenanceComponent extends Vue {
       }
       this.progressPercentage = this.progressPercentage + 1;
     }, 25);
+  }
 
+  private beforeDestroy() {
+    this.$emit('randomBackground', '#2A292D');
+    this.$emit('setVisibility', {
+      visibleNav: true,
+      visibleFooter: true,
+    });
   }
 
   private mounted() {
+    this.$emit('randomBackground', 'rgba(224, 231, 218, 0.88)');
+    this.$emit('setVisibility', {
+      visibleNav: false,
+      visibleFooter: false,
+    });
     this.initBarProgress();
   }
 }

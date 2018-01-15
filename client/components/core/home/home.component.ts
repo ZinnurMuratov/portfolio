@@ -24,8 +24,8 @@ import { seo } from './../services';
 })
 
 export class HomeComponent extends Vue {
-  public backgroundColor: string = 'rgba(0,0,0,0)';
-  public headerColor: string = 'rgba(0,0,0,0)';
+  public backgroundColor: string = '#2A292D';
+  public headerColor: string = '#2A292D';
 
   private backgroundTimeout: number;
   private timeoutTimer: number = 7500;
@@ -48,7 +48,7 @@ export class HomeComponent extends Vue {
   }
 
   private beforeDestroy() {
-    this.$emit('randomBackground', 'rgba(0,0,0,0)');
+    this.$emit('randomBackground', '#2A292D');
     window.clearInterval(this.backgroundTimeout);
   }
 

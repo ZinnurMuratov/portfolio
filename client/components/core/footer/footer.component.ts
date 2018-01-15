@@ -5,7 +5,6 @@ import { Prop } from 'vue-property-decorator';
 @Component({
   template: `
     <footer
-      :style="{'background-color': backgroundColor}"
       class="footer-component">
       <div class="container">
         <section class="footer-section">
@@ -23,7 +22,6 @@ import { Prop } from 'vue-property-decorator';
 })
 
 export class FooterComponent extends Vue {
-  @Prop() public backgroundColor: string;
 
   public socialLinks: SocialLinks[] = [
     {
