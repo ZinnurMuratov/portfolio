@@ -1,5 +1,4 @@
 .navigation-component {
-  transition: background-color 2.5s ease-in;
 
   .nav-section {
     @include grid-column(12);
@@ -7,6 +6,14 @@
     padding-bottom: 1rem;
   }
 
+  .navigation-links {
+    display: flex;
+  }
+
+  .nav-link:first-of-type {
+    margin-right: auto;
+  }
+  
   .nav-link a {
     color: $white;
     text-decoration: none;

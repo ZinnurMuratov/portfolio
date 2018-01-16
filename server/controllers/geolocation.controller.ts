@@ -11,8 +11,9 @@ export function GetGeolocation(req: GeoLookupRequest, res: Response, next: NextF
 
   ipV4().then((userIp: string) => {
     if (userIp) {
+      console.log('userIp:', userIp);
       req.geolookup = geoLookup(userIp);
     }
     return next();
-  });
+  }).catch((e: any) => next());
 }

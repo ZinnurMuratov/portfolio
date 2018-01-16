@@ -1,8 +1,9 @@
 .app-main {
-  background: $black;
   display: flex;
   min-height: 100%;
   flex-direction: column;
+  transition: background-color 2.5s ease-in;
+
 
   .app-content {
     flex: 1;

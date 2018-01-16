@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
+const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
 const helpers = require('./helper.methods');
+const config = require('./../gulp/config');
 
 module.exports = {
   context: helpers.root('.'),
@@ -71,6 +73,7 @@ module.exports = {
         NODE_ENV: '"production"'
       }
     }),
+    new webpack.optimize.AggressiveMergingPlugin(),
     new CompressionPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
@@ -78,5 +81,9 @@ module.exports = {
       threshold: 10240,
       minRatio: 0
     }),
+    new PrerenderSpaPlugin(
+      config.buildPath,
+      ['/', '/about', '/works', '/works/quotes', '/works/weather']
+    ),
   ]
 };
