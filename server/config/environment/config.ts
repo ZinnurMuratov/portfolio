@@ -1,4 +1,6 @@
 import { join, resolve } from 'path';
+
+const clientRoutes = require('./clientRoutes.json').routes;
 import { keys } from './secret';
 
 export const config = {
@@ -6,6 +8,7 @@ export const config = {
   prod: process.env.NODE_ENV && process.env.NODE_ENV === 'production',
   views_dir: resolve(__dirname, '..', '..', 'views'),
   client_assets_path: resolve(__dirname, '..', '..', '..', 'client'),
+  spaRoutes: clientRoutes,
   port: process.env.PORT ? process.env.PORT : 3000,
   keys: {
     weather: keys.weather_api,

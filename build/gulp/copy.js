@@ -8,6 +8,11 @@ const inject = require('gulp-inject');
 
 const config = require('./config');
 
+gulp.task('copy:json', () => {
+  gulp.src('server/**/*.json')
+    .pipe(gulp.dest(`${config.buildPath}/server`));
+});
+
 gulp.task('copy:ejs', () => {
   let jsSources = gulp.src([`${config.buildPath}/client/scripts/*.bundle.js`]);
   let cssSources = gulp.src([`${config.buildPath}/client/styles/*.css`]);
@@ -54,6 +59,7 @@ gulp.task('copy:documents', () => {
 });
 
 gulp.task('copy:all', [
+  'copy:json',
   'copy:ejs',
   'copy:images',
   'copy:fonts',
