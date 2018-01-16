@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+import { colorVariables } from './../../core';
 import { RGBA } from './../../works/interfaces';
 import { seo } from './../services';
 
 @Component({
   template: `
     <section
-      :style="{ 'background-color': backgroundColor }"
       v-on:click="toggleRandomBackground()"
       class="home-component section-full vertical-align">
 
@@ -24,32 +24,36 @@ import { seo } from './../services';
 })
 
 export class HomeComponent extends Vue {
-  public backgroundColor: string = 'rgba(0,0,0,0)';
-  public headerColor: string = 'rgba(0,0,0,0)';
+  public backgroundColor: string = colorVariables.black;
+  public headerColor: string = colorVariables.black;
 
   private backgroundTimeout: number;
-  private timeoutTimer: number = 7500;
+  private timeoutTimer: number = 6000;
   private toggledTimer: boolean = false;
 
   public toggleRandomBackground() {
-    this.toggledTimer ? this.initRandomBackground() : window.clearInterval(this.backgroundTimeout);
+    this.toggledTimer ? this.initRandomizerInterval() : window.clearInterval(this.backgroundTimeout);
     this.toggledTimer = !this.toggledTimer;
   }
 
   private mounted() {
     window.setTimeout(() => {
-      this.initRandomBackground();
       this.headerColor = 'white';
+      this.initRandomizerInterval();
     }, 0);
 
-    this.backgroundTimeout = window.setInterval(() => {
-      this.initRandomBackground();
-    }, this.timeoutTimer);
   }
 
   private beforeDestroy() {
-    this.$emit('randomBackground', 'rgba(0,0,0,0)');
+    this.$emit('randomBackground', colorVariables.black);
     window.clearInterval(this.backgroundTimeout);
+  }
+
+  private initRandomizerInterval() {
+    this.initRandomBackground();
+    this.backgroundTimeout = window.setInterval(() => {
+      this.initRandomBackground();
+    }, this.timeoutTimer);
   }
 
   private initRandomBackground() {

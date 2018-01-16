@@ -1,5 +1,5 @@
 .footer-component {
-  transition: background-color 2.5s ease-in;
+  width: 100%;
 
   .footer-section {
     @include grid-column(12);
@@ -17,19 +17,10 @@
   }
 
   .social-icon {
+    color: $white;
+
     i {
       font-size: 1.5rem;
     }
-
-    img {
-      max-height: 1.5rem;
-      max-width: 1.5rem;
-
-      @include grid-media($tablet-up) {
-        max-height: 32px;
-        max-width: 32px;
-      }
-    }
-  }
-  
+  }  
 }

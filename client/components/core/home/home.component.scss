@@ -1,13 +1,7 @@
 .home-component {
   height: 100%;
-  background-color: rgba(255,255,255, 1);
-  transition: background-color 2.5s ease-in;
 
   .main-container {
     text-align: center;
-  }
-  
-  .color-transition {
-    transition: color 2s ease-in;
   }
 }
