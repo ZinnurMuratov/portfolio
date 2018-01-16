@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { FooterComponent } from './../../core';
+
+import {
+  colorVariables,
+  FooterComponent,
+} from './../../core';
 
 @Component({
   template: `
@@ -33,7 +37,7 @@ export class MaintenanceComponent extends Vue {
   }
 
   private beforeDestroy() {
-    this.$emit('randomBackground', '#2A292D');
+    this.$emit('randomBackground', colorVariables.black);
     this.$emit('setVisibility', {
       visibleNav: true,
       visibleFooter: true,
@@ -41,7 +45,7 @@ export class MaintenanceComponent extends Vue {
   }
 
   private mounted() {
-    this.$emit('randomBackground', 'rgba(224, 231, 218, 0.88)');
+    this.$emit('randomBackground', colorVariables.grayOlive);
     this.$emit('setVisibility', {
       visibleNav: false,
       visibleFooter: false,

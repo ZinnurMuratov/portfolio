@@ -1,3 +1,51 @@
 .about-component {
-  // @include grid-column(12);
+  padding: 1rem 0 1rem;
+
+  .about-me-pic {
+    border-radius: 50%;
+    width: 15rem;
+    margin: auto;
+    display: block;
+  }
+  
+  .about-section {
+    @include grid-column(12);
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+    width: calc(100% - 4rem);
+    background-color: $white;
+  }
+
+  .selfie-section {
+    background-color: inherit;
+  }
+
+  .about-paragraph {
+    margin-top: 1rem;
+  }
+
+  .about-toggle {
+    color: $blue;
+    font-weight: bold;
+    
+    &:hover {
+      cursor: pointer;
+      color: darken($blue, 10%);
+    }
+  }
+
+  .skills-list {
+    margin-left: 1rem;
+
+    li p:before {
+      content: '> ';
+    }
+  }
+  .skills-header {
+    margin: 1.5rem 0 1rem;
+    font-weight: bold;
+  }
+  .skills-subheader {
+    font-style: italic;
+  }
 }

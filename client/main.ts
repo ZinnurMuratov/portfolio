@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import {
+  colorVariables,
   FooterComponent,
   MaintenanceComponent,
   NavComponent,
@@ -22,7 +23,7 @@ import router from './components/routes';
 })
 
 export class App extends Vue {
-  public backgroundColor: string = '#2A292D';
+  public backgroundColor: string = colorVariables.black;
   public visibleNav: boolean = true;
   public visibleFooter: boolean = true;
 

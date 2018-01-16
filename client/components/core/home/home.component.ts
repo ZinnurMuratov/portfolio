@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+import { colorVariables } from './../../core';
 import { RGBA } from './../../works/interfaces';
 import { seo } from './../services';
 
@@ -23,8 +24,8 @@ import { seo } from './../services';
 })
 
 export class HomeComponent extends Vue {
-  public backgroundColor: string = '#2A292D';
-  public headerColor: string = '#2A292D';
+  public backgroundColor: string = colorVariables.black;
+  public headerColor: string = colorVariables.black;
 
   private backgroundTimeout: number;
   private timeoutTimer: number = 6000;
@@ -35,12 +36,6 @@ export class HomeComponent extends Vue {
     this.toggledTimer = !this.toggledTimer;
   }
 
-  // figure out why on click won't restart the interval
-  // look into creating random shapes with svgs - rect & circles
-  // look into how to download resume in various formats
-  // could integrate google docs and set api to download directly from portfolio website
-  // write out About page
-
   private mounted() {
     window.setTimeout(() => {
       this.headerColor = 'white';
@@ -50,7 +45,7 @@ export class HomeComponent extends Vue {
   }
 
   private beforeDestroy() {
-    this.$emit('randomBackground', '#2A292D');
+    this.$emit('randomBackground', colorVariables.black);
     window.clearInterval(this.backgroundTimeout);
   }
 

@@ -30,8 +30,8 @@ const routes: RouteConfig[] = [
     ],
     redirect: '/works/dashboard',
   }, {
-    path: '/', component: HomeComponent,
-    // path: '/', component: MaintenanceComponent,
+    // path: '/', component: HomeComponent,
+    path: '/', component: MaintenanceComponent,
   }, {
     path: '*', redirect: '/',
   },
