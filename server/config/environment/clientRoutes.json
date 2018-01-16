@@ -6,22 +6,27 @@
       "priority": 0.5
     },
     {
+      "url": "/works",
+      "changefreq": "weekly",
+      "priority": 0.5
+    },
+    {
       "url": "/works/dashboard",
       "changefreq": "weekly",
       "priority": 0.5
     },
     {
-      "url": "/dashboard",
+      "url": "/works/weather",
       "changefreq": "weekly",
       "priority": 0.5
     },
     {
-      "url": "/weather",
+      "url": "/works/quotes",
       "changefreq": "weekly",
       "priority": 0.5
     },
     {
-      "url": "/quotes",
+      "url": "/about",
       "changefreq": "weekly",
       "priority": 0.5
     }

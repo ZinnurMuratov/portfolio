@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import { colorVariables } from './../../core';
+import { seo } from './../../core/services';
 
 @Component({
   template: `
@@ -163,8 +164,8 @@ import { colorVariables } from './../../core';
       </div>
     </main>
   `,
-  // name: seo.works.name,
-  // metaInfo: seo.works.metaInfo(),
+  name: seo.about.name,
+  metaInfo: seo.about.metaInfo,
 })
 
 export class AboutComponent extends Vue {

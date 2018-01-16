@@ -5,6 +5,7 @@ import {
   colorVariables,
   FooterComponent,
 } from './../../core';
+import { seo } from './../../core/services';
 
 @Component({
   template: `
@@ -22,6 +23,8 @@ import {
     </div>
   `,
   components: { FooterComponent },
+  name: seo.home.name,
+  metaInfo: seo.home.metaInfo(),
 })
 
 export class MaintenanceComponent extends Vue {
