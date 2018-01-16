@@ -23,7 +23,7 @@ export const seo = {
           {
             name: 'description',
             content: `Daniel's about page, with his downloadable resume, and the 
-            story of how he landed his first job as a Web Develope`,
+            story of how he landed his first job as a Web Developer`,
           },
         ],
       };

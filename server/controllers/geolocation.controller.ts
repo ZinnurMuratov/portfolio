@@ -9,8 +9,6 @@ export function GetGeolocation(req: GeoLookupRequest, res: Response, next: NextF
     return next();
   }
 
-  // req.geolookup = geoLookup('205.186.0.10');
-  // return next();
   ipV4().then((userIp: string) => {
     if (userIp) {
       console.log('userIp:', userIp);
