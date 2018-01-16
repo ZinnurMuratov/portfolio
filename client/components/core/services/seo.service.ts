@@ -22,8 +22,8 @@ export const seo = {
         meta: [
           {
             name: 'description',
-            content: `Daniel's about page with resume download links and short 
-            story on how to land a first job as a Web Developer`,
+            content: `Daniel's about page, with his downloadable resume, and the 
+            story of how he landed his first job as a Web Develope`,
           },
         ],
       };
@@ -37,7 +37,7 @@ export const seo = {
         meta: [
           {
             name: 'description',
-            content: `Danny's IO portfolio works page showcasing simple apps and previous works.`,
+            content: `Danny's IO portfolio works page showcasing sample apps and previous works.`,
           },
         ],
       };
@@ -51,7 +51,7 @@ export const seo = {
         meta: [
           {
             name: 'description',
-            content: `Random quotes app. It uses Stormconsultancy quotes api and allows for simple twitter share.`,
+            content: `Random quotes app. It uses Stormconsultancy quotes api and allows for twitter share.`,
           },
         ],
       };
@@ -65,7 +65,7 @@ export const seo = {
         meta: [
           {
             name: 'description',
-            content: `Simple weather app that uses Darksky weather api and Flickr to 
+            content: `A weather app that uses Darksky weather api and Flickr to 
             render the weather and a picture on the background.`,
           },
         ],
