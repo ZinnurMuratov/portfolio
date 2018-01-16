@@ -7,7 +7,7 @@ import { RGBA } from './../interfaces';
 @Component({
   template: `
     <main class="dashboard-component main-layout-hero">
-      <ul class="works-list">
+        <ul class="works-list">
         <li class="works-list-item" v-for="work in works">
           <a
             v-bind:href="work.url"

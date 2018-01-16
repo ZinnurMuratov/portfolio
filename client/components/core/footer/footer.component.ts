@@ -5,17 +5,13 @@ import { Prop } from 'vue-property-decorator';
 @Component({
   template: `
     <footer
-      :style="{'background-color': backgroundColor}"
       class="footer-component">
       <div class="container">
         <section class="footer-section">
           <ul class="flat-list center">
             <li v-for="link in socialLinks">
               <a v-bind:href="link.url" class="social-icon">
-                <img
-                  :srcset="link.icon.src.retina + ' 1.25x'"
-                  :src="link.icon.src.nonRetina"
-                  :alt="link.icon.alt"/>
+                <i v-bind:class="[link.faIcon]"/>
               </a>
             </li>
           </ul>
@@ -26,7 +22,6 @@ import { Prop } from 'vue-property-decorator';
 })
 
 export class FooterComponent extends Vue {
-  @Prop() public backgroundColor: string;
 
   public socialLinks: SocialLinks[] = [
     {
@@ -38,6 +33,7 @@ export class FooterComponent extends Vue {
         },
         alt: 'github icon',
       },
+      faIcon: 'fa fa-github',
     },
     {
       url: 'https://www.linkedin.com/in/dannyk08',
@@ -48,6 +44,7 @@ export class FooterComponent extends Vue {
         },
         alt: 'linkedIn icon',
       },
+      faIcon: 'fa fa-linkedin',
     },
   ];
 }
@@ -61,4 +58,5 @@ export interface SocialLinks {
     };
     alt: string;
   };
+  faIcon: string;
 }

@@ -2,8 +2,12 @@ import Vue from 'vue';
 import Meta from 'vue-meta';
 import VueRouter, { RouteConfig } from 'vue-router';
 
-import { HomeComponent } from './core';
 import {
+  HomeComponent,
+  MaintenanceComponent,
+} from './core';
+import {
+  AboutComponent,
   WorksDashboardComponent,
   WorksMainComponent,
   WorksQuotesComponent,
@@ -14,7 +18,9 @@ Vue.use(VueRouter);
 Vue.use(Meta);
 
 const routes: RouteConfig[] = [
-  { path: '/', component: HomeComponent }, {
+  {
+    path: '/about', component: AboutComponent,
+  }, {
     path: '/works',
     component: WorksMainComponent,
     children: [
@@ -23,7 +29,12 @@ const routes: RouteConfig[] = [
       { path: 'quotes', component: WorksQuotesComponent },
     ],
     redirect: '/works/dashboard',
-  }, { path: '*', redirect: '/' },
+  }, {
+    // path: '/', component: HomeComponent,
+    path: '/', component: MaintenanceComponent,
+  }, {
+    path: '*', redirect: '/',
+  },
 ];
 
 const router = new VueRouter({
