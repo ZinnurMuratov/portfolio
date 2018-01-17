@@ -2,6 +2,7 @@ import { Request } from 'express';
 
 export interface GeoLookupRequest extends Request {
   geolookup: GeoLookup;
+  clientIP: string;
 }
 
 export interface GeoLookup {
