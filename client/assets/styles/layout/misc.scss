@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: $raleway, sans-serif;
   color: $dark-gray;
 }
 
@@ -23,7 +23,7 @@ input {
   color: $dark-gray;
   font-size: 1rem;
   padding: 0.25rem 0.5rem;
-  font-family: 'Raleway';
+  font-family: $raleway;
   border: 0;
 
   &:focus {

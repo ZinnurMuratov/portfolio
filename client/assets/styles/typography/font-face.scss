@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Raleway';
+  src: local('Raleway'), local('Raleway-Regular'), url('#{$font-path}/Raleway-Regular.ttf') format('truetype') ;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cutive Mono';
+  src: local('Cutive Mono Regular'), local('CutiveMono-Regular'), url('#{$font-path}/CutiveMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}

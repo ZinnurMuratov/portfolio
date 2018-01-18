@@ -36,7 +36,7 @@ export class MaintenanceComponent extends Vue {
         clearInterval(timeout);
       }
       this.progressPercentage = this.progressPercentage + 1;
-    }, 25);
+    }, 35);
   }
 
   private beforeDestroy() {
