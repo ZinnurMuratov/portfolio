@@ -76,10 +76,6 @@
   version "8.0.47"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.47.tgz#968e596f91acd59069054558a00708c445ca30c2"
 
-"@types/public-ip@2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@types/public-ip/-/public-ip-2.3.0.tgz#8ef497b09e52455ab24f753b17e6703bb6baaebf"
-
 "@types/request@2.0.7":
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/@types/request/-/request-2.0.7.tgz#a2aa5a57317c21971d9b024e393091ab2c99ab98"
@@ -94,7 +90,7 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/vue-resource@0.9.34":
+"@types/vue-resource@^0.9.34":
   version "0.9.34"
   resolved "https://registry.yarnpkg.com/@types/vue-resource/-/vue-resource-0.9.34.tgz#a44f59c85485d16d80e0d7671c18bc73f871089e"
   dependencies:
@@ -1806,22 +1802,9 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
-dns-packet@^1.1.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/dns-packet/-/dns-packet-1.2.2.tgz#a8a26bec7646438963fc86e06f8f8b16d6c8bf7a"
-  dependencies:
-    ip "^1.1.0"
-    safe-buffer "^5.0.1"
-
 dns-prefetch-control@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/dns-prefetch-control/-/dns-prefetch-control-0.1.0.tgz#60ddb457774e178f1f9415f0cabb0e85b0b300b2"
-
-dns-socket@^1.6.1:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/dns-socket/-/dns-socket-1.6.2.tgz#c234432288c3c76cc131f4157faf7423a662304c"
-  dependencies:
-    dns-packet "^1.1.0"
 
 doctrine@1.5.0, doctrine@^1.2.2:
   version "1.5.0"
@@ -3129,7 +3112,7 @@ got@^6.7.1:
     unzip-response "^2.0.1"
     url-parse-lax "^1.0.0"
 
-got@^7.0.0:
+got@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/got/-/got-7.1.0.tgz#05450fd84094e6bbea56f451a43a9c289166385a"
   dependencies:
@@ -3951,14 +3934,6 @@ ip-regex@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-1.0.3.tgz#dc589076f659f419c222039a33316f1c7387effd"
 
-ip-regex@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-2.1.0.tgz#fa78bf5d2e6913c911ce9f819ee5146bb6d844e9"
-
-ip@^1.1.0:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
-
 ipaddr.js@1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.5.2.tgz#d4b505bde9946987ccf0fc58d9010ff9607e3fa0"
@@ -4112,12 +4087,6 @@ is-installed-globally@^0.1.0:
   dependencies:
     global-dirs "^0.1.0"
     is-path-inside "^1.0.0"
-
-is-ip@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/is-ip/-/is-ip-2.0.0.tgz#68eea07e8a0a0a94c2d080dd674c731ab2a461ab"
-  dependencies:
-    ip-regex "^2.0.0"
 
 is-jpg@^1.0.0:
   version "1.0.0"
@@ -6263,15 +6232,6 @@ public-encrypt@^4.0.0:
     parse-asn1 "^5.0.0"
     randombytes "^2.0.1"
 
-public-ip@2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/public-ip/-/public-ip-2.3.5.tgz#7d7847625881576ba7a1fa410b0978df239bdf75"
-  dependencies:
-    dns-socket "^1.6.1"
-    got "^6.7.1"
-    is-ip "^2.0.0"
-    pify "^2.3.0"
-
 "pullstream@>= 0.4.1 < 1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/pullstream/-/pullstream-0.4.1.tgz#d6fb3bf5aed697e831150eb1002c25a3f8ae1314"
@@ -8297,11 +8257,11 @@ vue-property-decorator@6.0.0:
     reflect-metadata "^0.1.10"
     vue-class-component "^6.0.0"
 
-vue-resource@1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/vue-resource/-/vue-resource-1.3.4.tgz#9fc0bdf6a2f5cab430129fc99d347b3deae7b099"
+vue-resource@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/vue-resource/-/vue-resource-1.3.5.tgz#021d8713e9d86a77e83169dfdd8eab6047369a71"
   dependencies:
-    got "^7.0.0"
+    got "^7.1.0"
 
 vue-router@3.0.1:
   version "3.0.1"
@@ -8329,9 +8289,9 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue@2.5.2:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.2.tgz#fd367a87bae7535e47f9dc5c9ec3b496e5feb5a4"
+vue@^2.5.13:
+  version "2.5.13"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.13.tgz#95bd31e20efcf7a7f39239c9aa6787ce8cf578e1"
 
 ware@^1.2.0:
   version "1.3.0"

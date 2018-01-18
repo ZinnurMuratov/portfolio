@@ -1,0 +1,27 @@
+.input-icon {
+  position: relative;
+  
+  .input-field:focus + .input-field-icon {
+    color: $black;
+  }
+  
+  .input-field-icon {
+    color: $gray;
+    position: absolute;
+    right: 0.5rem;
+    top: 1.75rem;
+    font-size: 1rem;
+    z-index: 9;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    transition: 1s linear color;
+
+    &:focus {
+      outline: 0;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

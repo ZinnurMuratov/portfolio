@@ -57,7 +57,9 @@
     background-position: center center;
     background-size: cover;
     height: 15rem;
-    position: relative;
+    display: flex;
+    padding: 1rem;
+    width: calc(100% - 2rem);
     transition: background-image 2s ease-in;
 
     .weather-data-font {
@@ -74,10 +76,8 @@
   }
 
   .weather-data-today {
-    @include grid-column(12);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    align-self: center;
+    width: 100%;
   }
 
   .weather-data-footer {
