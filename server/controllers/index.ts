@@ -1,3 +1,4 @@
+export * from './geocoding.controller';
 export * from './geolocation.controller';
 export * from './flickr.controller';
 export * from './quote.controller';

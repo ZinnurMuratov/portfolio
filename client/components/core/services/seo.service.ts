@@ -22,7 +22,7 @@ export const seo = {
         meta: [
           {
             name: 'description',
-            content: `Daniel's about page, with his downloadable resume, and the 
+            content: `Daniel's about page, with his downloadable resume, and the
             story of how he landed his first job as a Web Developer`,
           },
         ],
@@ -65,7 +65,7 @@ export const seo = {
         meta: [
           {
             name: 'description',
-            content: `A weather app that uses Darksky weather api and Flickr to 
+            content: `A weather app that uses Darksky weather api and Flickr to
             render the weather and a picture on the background.`,
           },
         ],

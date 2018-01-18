@@ -3,7 +3,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import { UserPosition } from './../../core/models';
-import { GeoLocatorService, seo } from './../../core/services';
+import { GeoCodingService, GeoLocatorService, seo } from './../../core/services';
 import { FlickrOptions } from './../interfaces';
 import { FlickrData, WeatherData } from './../models';
 import { FlickrService, GeoLocation, WeatherService } from './../services';
@@ -27,6 +27,25 @@ import { FlickrService, GeoLocation, WeatherService } from './../services';
                 </span>
               </h4>
               <h5 class="weather-data-font">{{ cityLocation }}</h5>
+
+              <div class="input-icon">
+                <input
+                  :disabled="disableGeocoding"
+                  v-on:keyup.enter="geocodeLookup()"
+                  v-model="inputAddress"
+                  class="input-field geo-code-weather"
+                  placeholder="Location, State Zipcode" />
+                <button
+                  :disabled="disableGeocoding"
+                  v-on:click="geocodeLookup()"
+                  class="input-field-icon">
+                  <i class="fa fa-search">
+                  </i>
+                </button>
+                <p v-if="geoCodeError.length">
+                  {{geoCodeError}}
+                </p>
+              </div>
             </div>
           </header>
           <footer class="weather-data-footer">
@@ -71,11 +90,38 @@ export class WorksWeatherComponent extends Vue {
     message: 'Click here to load weather',
   };
   public weatherData: WeatherData | null = null;
-  public cityLocation: string;
+  public cityLocation: string | null = null;
+  public inputAddress: string = '';
+  public geoCodeError: string = '';
+  public disableGeocoding: boolean = false;
 
   private weatherService = new WeatherService();
   private geolocationService = new GeoLocatorService();
+  private geoCodingService = new GeoCodingService();
   private flickrService = new FlickrService();
+
+  public geocodeLookup(event?: any) {
+    if (this.inputAddress.length && !this.disableGeocoding) {
+      this.disableGeocoding = true;
+      this.geoCodingService.getGeocode(this.inputAddress).then((result) => {
+        const { success, data } = result;
+
+        if (!success) {
+          this.geoCodeError = 'Failed to find this location. Please try another location.';
+        }
+
+        if (data.results.length) {
+          const { formatted_address } = data.results[0];
+          const { lat, lng } = data.results[0].geometry.location;
+          const geolocation: GeoLocation = { lat, long: lng };
+
+          this.getWeather(geolocation, formatted_address);
+        }
+        this.disableGeocoding = false;
+      });
+    }
+
+  }
 
   public clientGetWeather() {
     this.loadingWeather = true;
@@ -119,12 +165,12 @@ export class WorksWeatherComponent extends Vue {
     this.getWeather();
   }
 
-  private getWeather(coordinates?: GeoLocation) {
+  private getWeather(coordinates?: GeoLocation, formattedAddress?: any) {
     this.weatherService.getWeather(coordinates ? coordinates : null).then((weatherData) => {
       if (weatherData.geolookup) {
         this.cityLocation = `${weatherData.geolookup.city}, ${weatherData.geolookup.region}`;
       } else {
-        this.cityLocation = weatherData.data.timezone;
+        this.cityLocation = formattedAddress ? formattedAddress : `Timezone: ${weatherData.data.timezone}`;
       }
 
       if (!weatherData.success) {
