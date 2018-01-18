@@ -13,6 +13,7 @@ export const config = {
   keys: {
     weather: keys.weather_api,
     flickr: keys.flickr_api,
+    gGeocode: keys.geocode,
   },
   urls: {
     // https://darksky.net/dev/account
@@ -21,5 +22,7 @@ export const config = {
     flickr: 'https://api.flickr.com/',
     // http://quotes.stormconsultancy.co.uk/api
     quotes: 'http://quotes.stormconsultancy.co.uk/quotes/',
+    // https://developers.google.com/maps/documentation/geocoding/start
+    geocode: 'https://maps.googleapis.com/maps/api/geocode/json?address=',
   },
 };
