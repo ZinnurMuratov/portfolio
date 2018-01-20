@@ -7,6 +7,7 @@ import { GeoCodingService, GeoLocatorService, seo } from './../../core/services'
 import { FlickrOptions } from './../interfaces';
 import { FlickrData, WeatherData } from './../models';
 import { FlickrService, GeoLocation, WeatherService } from './../services';
+import { WorksWeatherDetailComponent } from './../weather-detail/weather-detail.component';
 
 @Component({
   template: `
@@ -49,25 +50,20 @@ import { FlickrService, GeoLocation, WeatherService } from './../services';
             </div>
           </header>
           <footer class="weather-data-footer">
-            <ul class="weather-data-weekly-cast">
-              <li v-for="dailyWeather in weatherData.data.daily.data.slice(1, 8)">
-                <div class="day-of-the-week">
-                  {{ timeFetched(dailyWeather.time).dayOfWeek }}, {{timeFetched(dailyWeather.time).day}}
-
-                </div>
-                <div class="weather-info">
-                  <p class="weather-info-temp">
-                    <span class="weather-info-temp-high">
-                      {{ weatherData.data.currently.fahrenheitUnits(dailyWeather.temperatureHigh) }}
-                    </span>
-                    <span class="hide-desktop-only">/</span>
-                    <span class="weather-info-temp-low">
-                      {{ weatherData.data.currently.fahrenheitUnits(dailyWeather.temperatureLow) }}
-                    </span>
-                  </p>
-                  <p class="hide-desktop-only weather-info-summary">{{ dailyWeather.summary }}</p>
-                </div>
-              </li>
+          <ul class="weather-data-weekly-cast">
+            <li
+              v-for="(dailyWeather, index) in weatherData.data.daily.data.slice(1, 8)"
+              v-bind:class="[detailedView[index] ? 'expand-details' : '']"
+              class="weather-data-item"
+              v-on:click="toggleDetailedView($event, index)"
+            >
+              <works-weather-detail-component
+                :expanded="detailedView[index]"
+                :timeFetched="timeFetched"
+                :fahrenheitUnits="weatherData.data.currently.fahrenheitUnits"
+                :dailyWeather="dailyWeather">
+              </works-weather-detail-component>
+            </li>
             </ul>
           </footer>
         </main>
@@ -80,6 +76,9 @@ import { FlickrService, GeoLocation, WeatherService } from './../services';
   `,
   name: seo.weather.name,
   metaInfo: seo.weather.metaInfo(),
+  components: {
+    WorksWeatherDetailComponent,
+  },
 })
 
 export class WorksWeatherComponent extends Vue {
@@ -94,11 +93,16 @@ export class WorksWeatherComponent extends Vue {
   public inputAddress: string = '';
   public geoCodeError: string = '';
   public disableGeocoding: boolean = false;
+  public detailedView: any = {};
 
   private weatherService = new WeatherService();
   private geolocationService = new GeoLocatorService();
   private geoCodingService = new GeoCodingService();
   private flickrService = new FlickrService();
+
+  public toggleDetailedView(event: any, index: number) {
+    this.$set(this.detailedView, index.toString(), !this.detailedView[index]);
+  }
 
   public geocodeLookup(event?: any) {
     if (this.inputAddress.length && !this.disableGeocoding) {
