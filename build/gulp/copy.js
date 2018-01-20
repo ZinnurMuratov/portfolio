@@ -4,6 +4,7 @@ const plumber = require('gulp-plumber');
 const gulpIf = require('gulp-if');
 const ejsMin = require('gulp-ejsmin');
 const imagemin = require('gulp-imagemin');
+const flatten = require('gulp-flatten');
 const inject = require('gulp-inject');
 
 const config = require('./config');
@@ -49,7 +50,11 @@ gulp.task('copy:images', () => {
 });
 
 gulp.task('copy:fonts', () => {
-  return gulp.src('node_modules/font-awesome/fonts/*')
+  return gulp.src([
+    'client/assets/fonts/**/*',
+    'node_modules/font-awesome/fonts/*',
+  ])
+    .pipe(flatten())
     .pipe(gulp.dest(`${config.buildPath}/client/fonts/`));
 });
 

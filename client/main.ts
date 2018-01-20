@@ -4,7 +4,6 @@ import Component from 'vue-class-component';
 import {
   colorVariables,
   FooterComponent,
-  MaintenanceComponent,
   NavComponent,
 } from './components/core';
 import router from './components/routes';

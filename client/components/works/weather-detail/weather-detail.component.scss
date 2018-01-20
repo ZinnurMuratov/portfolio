@@ -1,0 +1,38 @@
+.weather-detail-component {
+  display: flex;
+
+  &.expanded-view {
+    flex-direction: column;
+  }
+
+  @include grid-media($desktop-up) {
+    flex-direction: column;
+
+    &.expanded-view {
+      flex-direction: row;
+    }
+  }
+
+  .initial-info { 
+    padding-bottom: 0.5rem;
+  }
+  
+  .weather-info.expanded-info {
+    p {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  @include grid-media($desktop-up) {
+    .initial-info { 
+      padding-bottom: 0;
+    }
+    
+    .weather-info.expanded-info {
+      p {
+        margin-bottom: 0;
+        padding-top: 0;
+      }
+    }
+  }
+}

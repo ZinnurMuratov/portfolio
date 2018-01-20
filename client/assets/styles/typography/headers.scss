@@ -1,7 +1,7 @@
 h1,
 h2,
 h3 {
-  font-family: 'Cutive Mono', monospace;
+  font-family: $cutive, monospace;
   color: $dark-gray;
 }
 
@@ -23,7 +23,7 @@ h4,
 h5,
 h6 {
   @include body-default();
-  font-family: 'Raleway', sans-serif;
+  font-family: $raleway, sans-serif;
   word-wrap: break-word;
   color: $dark-gray;
 }
