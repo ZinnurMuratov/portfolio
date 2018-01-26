@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import { join, resolve } from 'path';
 import { createSitemap } from 'sitemap';
 import { config } from './../config/environment/config';
 
