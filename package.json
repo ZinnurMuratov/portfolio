@@ -13,6 +13,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "testHook": "echo \"Hook fired\" && exit 1",
     "webpack": "webpack",
     "prestart": "yarn install",
     "start": "concurrently -k \"gulp run\" \"npm run webpack\"",
