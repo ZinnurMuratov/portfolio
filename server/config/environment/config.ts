@@ -14,6 +14,7 @@ export const config = {
     weather: keys.weather_api,
     flickr: keys.flickr_api,
     gGeocode: keys.geocode,
+    hubSignture: keys.hubSignature,
   },
   urls: {
     // https://darksky.net/dev/account

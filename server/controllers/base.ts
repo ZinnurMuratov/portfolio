@@ -22,7 +22,10 @@ export function HandleSitemap(req: Request, res: Response, next: NextFunction) {
 
 export function HandleRobots(req: Request, res: Response, next: NextFunction) {
   res.type('text/plain');
-  res.send(`User-agent: * \nDisallow: /api/*`);
+  res.send(`
+  User-agent: *
+  Disallow: /api/*
+  Disallow: /scripts/*`);
 }
 
 export function HandleCatchall(req: Request, res: Response, next: NextFunction) {
