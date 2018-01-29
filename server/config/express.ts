@@ -1,3 +1,4 @@
+import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
 import { Application, Request, Response, static as ExpressStatic } from 'express';
 import * as helmet from 'helmet';
@@ -13,6 +14,8 @@ export function startExpress(app: Application) {
   app.set('trust proxy', (ip: string) => ip === '127.0.0.1' || ip === '123.123.123.123');
   app.set('view engine', 'ejs');
 
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
   app.use(requestIp.mw({ attributeName: 'clientIP' }));
   if (!config.prod) {
     app.disable('etag');
