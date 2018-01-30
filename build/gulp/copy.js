@@ -19,20 +19,33 @@ gulp.task('copy:ejs', () => {
   let jsSources = gulp.src([`${config.buildPath}/client/scripts/*.bundle.js`]);
   let cssSources = gulp.src([`${config.buildPath}/client/styles/*.css`]);
 
+  let cleanFilePath = function (file) {
+    let tempFolders = ['/.dist/client', '/.tmp/client'];
+    let filePath;
+
+    tempFolders.forEach((f) => {
+      if (file.includes(f)) {
+        filePath = file.replace(f, '');
+      }
+    });
+    return filePath;
+  }
+
+
   let applicationSrc = gulp.src('server/views/**/*.ejs')
     .pipe(plumber())
     .pipe(gulpIf(config.prod, inject(jsSources, {
       starttag: '<%# startinject:js %>',
       endtag: '<%# endinject:js %>',
       transform: (filePath) => {
-        return `<script src="${filePath.replace('/.dist/client', '')}" async></script>`;
+        return `<script src="${cleanFilePath(filePath)}" async></script>`;
       }
     })))
     .pipe(gulpIf(config.prod, inject(cssSources, {
       starttag: '<%# startinject:css %>',
       endtag: '<%# endinject:css %>',
       transform: (filePath) => {
-        return `<link rel="stylesheet" href="${filePath.replace('/.dist/client', '')}">`;
+        return `<link rel="stylesheet" href="${cleanFilePath(filePath)}">`;
       }
     })))
     .pipe(gulpIf(config.prod, ejsMin({
