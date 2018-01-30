@@ -24,6 +24,7 @@ gulp.task('build', (cb) => {
     'inject:component:scss', 'sass',
     'copy:all',
     'typescript:server',
+    'mv:build',
     cb
   );
 });

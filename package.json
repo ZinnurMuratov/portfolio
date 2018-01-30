@@ -17,8 +17,7 @@
     "webpack": "webpack",
     "prestart": "yarn install",
     "start": "concurrently -k \"gulp run\" \"npm run webpack\"",
-    "cleanBuild": "rm -rf node_modules yarn.lock package-lock.json; npm run build;",
-    "build": "NODE_ENV=production gulp build;"
+    "build": "NODE_ENV=production BUILD_DEST=.tmp gulp build"
   },
   "repository": {
     "type": "git",
@@ -80,6 +79,7 @@
     "file-loader": "1.1.5",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "4.0.0",
+    "gulp-chmod": "^2.0.0",
     "gulp-clean-css": "3.9.0",
     "gulp-cssnano": "2.1.2",
     "gulp-ejsmin": "0.0.1",

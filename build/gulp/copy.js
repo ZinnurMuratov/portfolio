@@ -6,6 +6,7 @@ const ejsMin = require('gulp-ejsmin');
 const imagemin = require('gulp-imagemin');
 const flatten = require('gulp-flatten');
 const inject = require('gulp-inject');
+const chmod = require('gulp-chmod');
 
 const config = require('./config');
 
@@ -44,6 +45,7 @@ gulp.task('copy:ejs', () => {
 
 gulp.task('copy:server:scripts', () => {
   return gulp.src('server/scripts/**/*')
+    .pipe(chmod(0o757))
     .pipe(gulp.dest(`${config.buildPath}/server/scripts/`));
 });
 
