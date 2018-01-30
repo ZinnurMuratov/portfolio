@@ -9,7 +9,7 @@ module.exports = {
   context: helpers.root('.'),
   entry: helpers.root('client/main.ts'),
   output: {
-    path: helpers.root('.dist/client/scripts/'),
+    path: helpers.root(`${config.buildPath}/client/scripts/`),
     filename: '[name].[chunkhash].bundle.js'
   },
   devtool: 'source-map',

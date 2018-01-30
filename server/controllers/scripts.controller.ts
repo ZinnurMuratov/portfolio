@@ -1,7 +1,10 @@
 import * as bufferEQ from 'buffer-equal-constant-time';
+import { execFile } from 'child_process';
 import { createHmac } from 'crypto';
 import { NextFunction, Request, Response } from 'express';
+import { existsSync, mkdirSync, writeFile } from 'fs';
 import { join } from 'path';
+
 import { config } from './../config/environment/config';
 
 export function VerifyGithub(req: Request, res: Response, next: NextFunction) {
@@ -13,6 +16,25 @@ export function VerifyGithub(req: Request, res: Response, next: NextFunction) {
   return bufferMatch ? next() : res.redirect('/');
 }
 
+export function RecordEvent(req: Request, res: Response, next: NextFunction) {
+  const logsDirectory: string = '.logs';
+  if (!existsSync(logsDirectory)) {
+    mkdirSync(logsDirectory);
+  }
+
+  writeFile(`${logsDirectory}/${Date.now()}.json`, JSON.stringify(req.body), (err) => {
+    if (err) { return console.error(err); }
+  });
+
+  return next();
+}
+
 export function HandleDeploy(req: Request, res: Response, next: NextFunction) {
-  return res.sendFile(join(__dirname, '..', 'scripts', 'deploy.php'));
+  execFile(join(__dirname, '..', 'scripts', 'launch.sh'), {
+    maxBuffer: 1240 * 1240,
+  }, (error, stdout, stderr) => {
+    if (error) { console.error(error); }
+  });
+
+  return res.sendStatus(200);
 }

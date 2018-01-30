@@ -4,6 +4,8 @@
 *node_modules
 *.dev
 *.dist
+*.logs
+*.tmp
 
 *.DS_Store
 
