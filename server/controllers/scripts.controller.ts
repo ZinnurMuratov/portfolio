@@ -1,11 +1,14 @@
 import * as bufferEQ from 'buffer-equal-constant-time';
 import { execFile } from 'child_process';
 import { createHmac } from 'crypto';
+import * as debug from 'debug';
 import { NextFunction, Request, Response } from 'express';
 import { existsSync, mkdirSync, writeFile } from 'fs';
 import { join } from 'path';
 
 import { config } from './../config/environment/config';
+
+const hDebugger = debug('HEADERS');
 
 export function VerifyGithub(req: Request, res: Response, next: NextFunction) {
   const hubKey: string = config.keys.hubSignture;
@@ -13,6 +16,7 @@ export function VerifyGithub(req: Request, res: Response, next: NextFunction) {
   const encryptedKey: string = `sha1=${createHmac('sha1', hubKey).update(JSON.stringify(req.body)).digest('hex')}`;
   const bufferMatch: boolean = bufferEQ(Buffer.from(ghEncryptedKey), Buffer.from(encryptedKey));
 
+  hDebugger(req.headers);
   return bufferMatch ? next() : res.redirect('/');
 }
 
