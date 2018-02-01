@@ -29,7 +29,7 @@ gulp.task('copy:ejs', () => {
       }
     });
     return filePath;
-  }
+  };
 
 
   let applicationSrc = gulp.src('server/views/**/*.ejs')

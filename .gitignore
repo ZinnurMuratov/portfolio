@@ -5,7 +5,9 @@
 *.dev
 *.dist
 *.logs
+*.log
 *.tmp
+*log.js
 
 *.DS_Store
 

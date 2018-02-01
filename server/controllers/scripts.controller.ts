@@ -1,22 +1,23 @@
 import * as bufferEQ from 'buffer-equal-constant-time';
 import { execFile } from 'child_process';
 import { createHmac } from 'crypto';
-import * as debug from 'debug';
 import { NextFunction, Request, Response } from 'express';
 import { existsSync, mkdirSync, writeFile } from 'fs';
 import { join } from 'path';
 
 import { config } from './../config/environment/config';
+import { debugLog } from './../config/services';
 
-const hDebugger = debug('HEADERS');
+const log = debugLog('HEADERS');
 
 export function VerifyGithub(req: Request, res: Response, next: NextFunction) {
+  log.debug(req.headers);
+
   const hubKey: string = config.keys.hubSignture;
   const ghEncryptedKey: string = req.headers['x-hub-signature'] || null;
   const encryptedKey: string = `sha1=${createHmac('sha1', hubKey).update(JSON.stringify(req.body)).digest('hex')}`;
   const bufferMatch: boolean = bufferEQ(Buffer.from(ghEncryptedKey), Buffer.from(encryptedKey));
 
-  hDebugger(req.headers);
   return bufferMatch ? next() : res.redirect('/');
 }
 
@@ -26,7 +27,7 @@ export function RecordEvent(req: Request, res: Response, next: NextFunction) {
     mkdirSync(logsDirectory);
   }
 
-  writeFile(`${logsDirectory}/${Date.now()}.json`, JSON.stringify(req.body), (err) => {
+  writeFile(`${logsDirectory}/${Date.now()}.json`, JSON.stringify(req.body, null, 2), (err) => {
     if (err) { return console.error(err); }
   });
 
@@ -34,7 +35,8 @@ export function RecordEvent(req: Request, res: Response, next: NextFunction) {
 }
 
 export function HandleDeploy(req: Request, res: Response, next: NextFunction) {
-  execFile(join(__dirname, '..', 'scripts', 'launch.sh'), {
+  const executable = join(__dirname, '..', 'scripts', config.prod ? 'launch.sh' : 'test.sh');
+  execFile(executable, {
     maxBuffer: 1240 * 1240,
   }, (error, stdout, stderr) => {
     if (error) { console.error(error); }
