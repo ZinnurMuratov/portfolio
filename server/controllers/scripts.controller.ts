@@ -35,12 +35,14 @@ export function RecordEvent(req: Request, res: Response, next: NextFunction) {
 }
 
 export function HandleDeploy(req: Request, res: Response, next: NextFunction) {
-  const executable = join(__dirname, '..', 'scripts', config.prod ? 'launch.sh' : 'test.sh');
-  execFile(executable, {
-    maxBuffer: 1240 * 1240,
-  }, (error, stdout, stderr) => {
-    if (error) { console.error(error); }
-  });
+  if (req.body.ref && req.body.ref.includes('/heads/master')) {
+    const executable = join(__dirname, '..', 'scripts', config.prod ? 'launch.sh' : 'test.sh');
+    execFile(executable, {
+      maxBuffer: 1240 * 1240,
+    }, (error, stdout, stderr) => {
+      if (error) { console.error(error); }
+    });
+  }
 
   return res.sendStatus(200);
 }
