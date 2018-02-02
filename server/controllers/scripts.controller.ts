@@ -32,7 +32,6 @@ export function RecordEvent(req: Request, res: Response, next: NextFunction) {
 }
 
 export function HandleDeploy(req: Request, res: Response, next: NextFunction) {
-  console.log('includes heads/master', req.body.ref.includes('/heads/master'));
   if (req.body.ref && req.body.ref.includes('/heads/master')) {
     const executable: string = `npm run ${!config.prod ? 'rebuild' : 'buildTest'}`;
     exec(executable, { maxBuffer: 1240 * 1240 }, (err, stdout, stderr) => {
