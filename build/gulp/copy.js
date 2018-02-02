@@ -56,12 +56,6 @@ gulp.task('copy:ejs', () => {
     .pipe(gulp.dest(`${config.buildPath}/server/views/`));
 });
 
-gulp.task('copy:server:scripts', () => {
-  return gulp.src('server/scripts/**/*')
-    .pipe(chmod(0o757))
-    .pipe(gulp.dest(`${config.buildPath}/server/scripts/`));
-});
-
 gulp.task('copy:images', () => {
   return gulp.src('client/assets/images/**/*.{jpg,png,gif}')
     .pipe(plumber())
@@ -89,5 +83,4 @@ gulp.task('copy:all', [
   'copy:images',
   'copy:fonts',
   'copy:documents',
-  'copy:server:scripts',
 ]);
