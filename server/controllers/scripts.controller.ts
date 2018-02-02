@@ -1,20 +1,17 @@
 import * as bufferEQ from 'buffer-equal-constant-time';
-import { execFile } from 'child_process';
+import { exec } from 'child_process';
 import { createHmac } from 'crypto';
 import { NextFunction, Request, Response } from 'express';
 import { existsSync, mkdirSync, writeFile } from 'fs';
 import { join } from 'path';
 
 import { config } from './../config/environment/config';
-import { debugLog } from './../config/services';
-
-const log = debugLog('HEADERS');
+import { debugLog as log } from './../config/services';
 
 export function VerifyGithub(req: Request, res: Response, next: NextFunction) {
-  log.debug(req.headers);
-
+  log('HEADERS').debug(req.headers);
   const hubKey: string = config.keys.hubSignture;
-  const ghEncryptedKey: string = req.headers['x-hub-signature'] || null;
+  const ghEncryptedKey: any = req.headers['x-hub-signature'] || null;
   const encryptedKey: string = `sha1=${createHmac('sha1', hubKey).update(JSON.stringify(req.body)).digest('hex')}`;
   const bufferMatch: boolean = bufferEQ(Buffer.from(ghEncryptedKey), Buffer.from(encryptedKey));
 
@@ -35,12 +32,11 @@ export function RecordEvent(req: Request, res: Response, next: NextFunction) {
 }
 
 export function HandleDeploy(req: Request, res: Response, next: NextFunction) {
+  console.log('includes heads/master', req.body.ref.includes('/heads/master'));
   if (req.body.ref && req.body.ref.includes('/heads/master')) {
-    const executable = join(__dirname, '..', 'scripts', config.prod ? 'launch.sh' : 'test.sh');
-    execFile(executable, {
-      maxBuffer: 1240 * 1240,
-    }, (error, stdout, stderr) => {
-      if (error) { console.error(error); }
+    const executable: string = `npm run ${!config.prod ? 'rebuild' : 'buildTest'}`;
+    exec(executable, { maxBuffer: 1240 * 1240 }, (err, stdout, stderr) => {
+      if (err) { log('EXEC').error(err); }
     });
   }
 
