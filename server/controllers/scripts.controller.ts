@@ -1,5 +1,5 @@
 import * as bufferEQ from 'buffer-equal-constant-time';
-import { exec } from 'child_process';
+import { spawn } from 'child_process';
 import { createHmac } from 'crypto';
 import { NextFunction, Request, Response } from 'express';
 import { existsSync, mkdirSync, writeFile } from 'fs';
@@ -33,10 +33,14 @@ export function RecordEvent(req: Request, res: Response, next: NextFunction) {
 
 export function HandleDeploy(req: Request, res: Response, next: NextFunction) {
   if (req.body.ref && req.body.ref.includes('/heads/master')) {
-    const executable: string = `npm run ${config.prod ? 'rebuild' : 'buildTest'}`;
-    exec(executable, { maxBuffer: 1240 * 1240 }, (err, stdout, stderr) => {
-      if (err) { log('EXEC').error(err); }
-    });
+    try {
+      const npm = spawn('npm', ['run', config.prod ? 'rebuild' : 'buildTest']);
+      npm.stdout.on('data', (d) => log('EXEC').debug('stdout: ' + d.toString()));
+      npm.stderr.on('data', (error) => { throw error.toString(); });
+      npm.on('close', (c) => log('EXEC').debug('done: ' + c));
+    } catch (error) {
+      log('EXEC').error('stderr: ' + error);
+    }
   }
 
   return res.sendStatus(200);
