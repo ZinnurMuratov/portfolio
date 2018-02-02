@@ -17,7 +17,9 @@
     "webpack": "webpack",
     "prestart": "yarn install",
     "start": "concurrently -k \"gulp run\" \"npm run webpack\"",
-    "build": "NODE_ENV=production BUILD_DEST=.tmp gulp build"
+    "build": "NODE_ENV=production BUILD_DEST=.tmp gulp build",
+    "buildTest": "bash launch.test.sh",
+    "rebuild": "bash launch.sh"
   },
   "repository": {
     "type": "git",
