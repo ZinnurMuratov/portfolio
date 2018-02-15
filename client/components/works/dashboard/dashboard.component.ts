@@ -11,7 +11,7 @@ import { RGBA } from './../interfaces';
         <li class="works-list-item" v-for="work in works">
           <a
             v-bind:href="work.url"
-            :style="{'background-color': randomColor() }"
+            :style="{'--color': randomColor()}"
             class="works-list-item-anchor">
             <p class="works-list-title">{{ work.title }}</p>
           </a>
@@ -32,6 +32,10 @@ export class WorksDashboardComponent extends Vue {
     {
       url: '/works/quotes',
       title: 'Random Quotes',
+    },
+    {
+      url: 'https://sellbrite-vue.firebaseapp.com/shop',
+      title: 'Sample Checkout',
     },
   ];
 
