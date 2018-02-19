@@ -103,12 +103,12 @@ import { seo } from './../../core/services';
 
           <p class="about-paragraph">
             download resume:
-            <a href="/documents/resume/resume-2018.pdf" class="about-toggle" download>PDF</a>
+            <a href="/documents/resume/daniel_romero_resume_feb2018.pdf" class="about-toggle" download>PDF</a>
             <span> | </span>
-            <a href="/documents/resume/resume-2018.docx" class="about-toggle" download>DOCX</a>
+            <a href="/documents/resume/daniel_romero_resume_feb2018.docx" class="about-toggle" download>DOCX</a>
             <span> | </span>
             <a
-              href="https://docs.google.com/document/d/1piA_8KysQGiC1Og-fe9ebjZscfF_IQh3a79ewUEQ22U/edit?usp=sharing"
+              href="https://docs.google.com/document/d/1QFK3eKm5xSfQnPTpIGDCSKddbI0qw0sU6DQWvImdmVc/edit?usp=sharing"
               class="about-toggle">Google Docs</a>
           </p>
 

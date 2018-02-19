@@ -19,18 +19,18 @@ Vue.use(Meta);
 
 const routes: RouteConfig[] = [
   {
-    path: '/about', component: AboutComponent,
+    path: '/about', name: 'About', component: AboutComponent,
   }, {
     path: '/works',
     component: WorksMainComponent,
     children: [
-      { path: 'dashboard', component: WorksDashboardComponent },
-      { path: 'weather', component: WorksWeatherComponent },
-      { path: 'quotes', component: WorksQuotesComponent },
+      { path: 'dashboard', name: 'WorksDashboard', component: WorksDashboardComponent },
+      { path: 'weather', name: 'WorksWeather', component: WorksWeatherComponent },
+      { path: 'quotes', name: 'WorksQuotes', component: WorksQuotesComponent },
     ],
     redirect: '/works/dashboard',
   }, {
-    path: '/', component: HomeComponent,
+    path: '/', name: 'Home', component: HomeComponent,
   }, {
     path: '*', redirect: '/',
   },
