@@ -10,11 +10,20 @@ import { RGBA } from './../interfaces';
         <ul class="works-list">
         <li class="works-list-item" v-for="work in works">
           <a
+            v-if="!work.name"
             v-bind:href="work.url"
             :style="{'--color': randomColor()}"
             class="works-list-item-anchor">
             <p class="works-list-title">{{ work.title }}</p>
           </a>
+          <router-link
+            v-if="work.name"
+            v-bind:href="work.url"
+            :style="{'--color': randomColor()}"
+            :to="{name: work.name}"
+            class="works-list-item-anchor">
+            <p class="works-list-title">{{ work.title }}</p>
+          </router-link>
         </li>
       </ul>
     </main>
@@ -28,14 +37,16 @@ export class WorksDashboardComponent extends Vue {
     {
       url: '/works/weather',
       title: 'Weather App',
+      name: 'WorksWeather',
     },
     {
       url: '/works/quotes',
       title: 'Random Quotes',
+      name: 'WorksQuotes',
     },
     {
       url: 'https://sellbrite-vue.firebaseapp.com/shop',
-      title: 'Sample Checkout',
+      title: 'Cart.ly',
     },
   ];
 
@@ -54,4 +65,5 @@ export class WorksDashboardComponent extends Vue {
 export interface IWorks {
   url: string;
   title: string;
+  name?: string;
 }
