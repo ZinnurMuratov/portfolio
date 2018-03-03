@@ -1,7 +1,7 @@
 h1,
 h2,
 h3 {
-  font-family: $cutive, monospace;
+  font-family: $arvo, monospace;
   color: $dark-gray;
 }
 
@@ -26,4 +26,13 @@ h6 {
   font-family: $raleway, sans-serif;
   word-wrap: break-word;
   color: $dark-gray;
+}
+
+p,
+a {
+  line-height: 2;
+}
+
+p+p {
+  text-indent: 0;
 }

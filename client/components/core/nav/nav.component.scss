@@ -1,21 +1,24 @@
 .navigation-component {
-
+  width: 100%;
+  position: fixed;
+  transition: background-color 2.5s ease-in;
   .nav-section {
     @include grid-column(12);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
-
   .navigation-links {
     display: flex;
   }
-
   .nav-link:first-of-type {
     margin-right: auto;
   }
-  
+  .nav-link h5 {
+    margin-bottom: 0;
+  }
   .nav-link a {
     color: $white;
     text-decoration: none;
+    font-family: $arvo, monospace;
   }
 }

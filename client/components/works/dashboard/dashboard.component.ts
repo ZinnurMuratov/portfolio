@@ -48,6 +48,10 @@ export class WorksDashboardComponent extends Vue {
       url: 'https://sellbrite-vue.firebaseapp.com/shop',
       title: 'Cart.ly',
     },
+    {
+      url: 'https://guitar-center-vanilla.firebaseapp.com/shop',
+      title: 'Guitar Center Mock',
+    },
   ];
 
   public randomColor(): string {
