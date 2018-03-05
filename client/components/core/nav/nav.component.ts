@@ -8,9 +8,26 @@ import { colorVariables } from './../constants';
   template: `
     <nav
       :style="{'background-color': backgroundColor}"
+      :class="{'mobile-nav-list-container': displayMobileNav }"
       class="navigation-component">
       <div class="container">
-        <section class="nav-section">
+        <section
+          :class="{'show-nav': displayMobileNav }"
+          class="nav-mobile-display"
+          v-if="displayMobileNavButton">
+            <div class="mobile-nav-icon-toggle">
+              <h4 class="toggle-icon" @click="toggleMobileNav()">
+                <span>
+                  <i
+                    :class="[displayMobileNav ? 'fa-times' : 'fa-bars']"
+                    class="fa" aria-hidden="true"></i>
+                </span>
+              </h4>
+            </div>
+        </section>
+        <section
+          :class="{'mobile-nav-list': displayMobileNav }"
+          class="nav-section">
           <ul class="flat-list right navigation-links">
             <li class="nav-link">
               <h5>
@@ -36,4 +53,22 @@ import { colorVariables } from './../constants';
 
 export class NavComponent extends Vue {
   @Prop() public backgroundColor: string;
+  public windowWidth: number = window.innerWidth;
+  public displayMobileNavButton: boolean = window.innerWidth <= 700;
+  public displayMobileNav: boolean = false;
+
+  public toggleMobileNav() {
+    this.displayMobileNav = !this.displayMobileNav;
+  }
+
+  private getWindowWidth(e: Event) {
+    this.windowWidth = window.innerWidth;
+    this.displayMobileNavButton = window.innerWidth <= 700;
+  }
+
+  private mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.getWindowWidth);
+    });
+  }
 }

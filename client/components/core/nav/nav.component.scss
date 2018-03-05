@@ -2,6 +2,44 @@
   width: 100%;
   position: fixed;
   transition: background-color 2.5s ease-in;
+
+  &.mobile-nav-list-container {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .mobile-nav-icon-toggle {
+    padding: 1rem;
+    display: inline-block;
+
+    .toggle-icon { 
+      color: $white;
+      margin-bottom: 0;
+    }
+  }
+
+  .nav-mobile-display {  }
+
+  .nav-mobile-display + .nav-section {
+    display: none;
+  } 
+  
+  .nav-mobile-display.show-nav + .nav-section {
+    display: block;
+  }
+
+  .mobile-nav-list .navigation-links {
+    display: block;
+    text-align: center;
+  }
+  .mobile-nav-list .navigation-links li {
+    display: block;
+    width: 100%;
+  }
+
   .nav-section {
     @include grid-column(12);
     padding-top: 1.5rem;
@@ -10,12 +48,15 @@
   .navigation-links {
     display: flex;
   }
+
   .nav-link:first-of-type {
     margin-right: auto;
   }
+
   .nav-link h5 {
     margin-bottom: 0;
   }
+
   .nav-link a {
     color: $white;
     text-decoration: none;
