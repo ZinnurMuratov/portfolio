@@ -10,7 +10,7 @@ export function GetFlickrImage(req: Request, res: Response, next: NextFunction) 
     return res.status(400).json({ error: 'Must include tags for search' });
   }
 
-  const flickerRequestOptions = stringify(Object.assign(req.query, {
+  const flickerRequestOptions = stringify(Object.assign({}, req.query, {
     api_key: process.env.FLICKR_API_KEY || config.keys.flickr,
     method: 'flickr.photos.search',
     format: 'json',

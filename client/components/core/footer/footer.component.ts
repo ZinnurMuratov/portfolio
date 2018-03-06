@@ -13,7 +13,7 @@ import { colorVariables } from './../constants';
           <h3 class="location-icon">
             <i class="fa fa-map-marker color-transition" :style="{ 'color': iconColor }" aria-hidden="true"></i>
           </h3>
-          <h5 class="location-city color-transition" :style="{ 'color': cityColor }">LOS ANGELES, CA</h5>
+          <h3 class="location-city color-transition" :style="{ 'color': cityColor }">LOS ANGELES, CA</h3>
         </section>
         <section class="footer-section">
           <ul class="flat-list center">

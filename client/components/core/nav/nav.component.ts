@@ -16,13 +16,13 @@ import { colorVariables } from './../constants';
           class="nav-mobile-display"
           v-if="displayMobileNavButton">
             <div class="mobile-nav-icon-toggle">
-              <h4 class="toggle-icon" @click="toggleMobileNav()">
+              <p class="toggle-icon" @click="toggleMobileNav()">
                 <span>
                   <i
                     :class="[displayMobileNav ? 'fa-times' : 'fa-bars']"
                     class="fa" aria-hidden="true"></i>
                 </span>
-              </h4>
+              </p>
             </div>
         </section>
         <section
@@ -30,19 +30,19 @@ import { colorVariables } from './../constants';
           class="nav-section">
           <ul class="flat-list right navigation-links">
             <li class="nav-link">
-              <h5 @click="toggleMobileNav()">
+              <h4 @click="toggleMobileNav()">
                 <router-link :to="{ path: '/' }">HOME</router-link>
-              </h5>
+              </h4>
             </li>
             <li class="nav-link">
-              <h5 @click="toggleMobileNav()">
+              <h4 @click="toggleMobileNav()">
                 <router-link :to="{ path: '/works' }">WORKS</router-link>
-              </h5>
+              </h4>
             </li>
             <li class="nav-link">
-              <h5 @click="toggleMobileNav()">
+              <h4 @click="toggleMobileNav()">
                 <router-link :to="{ path: '/about' }">ABOUT</router-link>
-              </h5>
+              </h4>
             </li>
           </ul>
         </section>
