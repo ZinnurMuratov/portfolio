@@ -6,7 +6,6 @@ const ejsMin = require('gulp-ejsmin');
 const imagemin = require('gulp-imagemin');
 const flatten = require('gulp-flatten');
 const inject = require('gulp-inject');
-const chmod = require('gulp-chmod');
 
 const config = require('./config');
 

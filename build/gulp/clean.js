@@ -10,7 +10,7 @@ gulp.task('del', () => {
 });
 
 gulp.task('mv:build', (cb) => {
-  exec('rm -rf .dist && mv .tmp .dist', (err, stdout, stderror) => {
+  exec('rm -rf .dist && mv .tmp .dist', (err) => {
     cb(err);
   });
 });

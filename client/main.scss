@@ -8,14 +8,14 @@ $fa-font-path: $font-path;
 
 // startinject
 @import 'components/app.scss';
-@import 'components/core/home/home.component.scss';
 @import 'components/core/footer/footer.component.scss';
+@import 'components/core/home/home.component.scss';
 @import 'components/core/maintenance/maintenance.component.scss';
 @import 'components/core/nav/nav.component.scss';
 @import 'components/works/about/about.component.scss';
 @import 'components/works/dashboard/dashboard.component.scss';
 @import 'components/works/main/main.component.scss';
 @import 'components/works/randomQuotes/randomQuote.component.scss';
-@import 'components/works/weather/weather.component.scss';
 @import 'components/works/weather-detail/weather-detail.component.scss';
+@import 'components/works/weather/weather.component.scss';
 // endinject
