@@ -30,17 +30,17 @@ import { colorVariables } from './../constants';
           class="nav-section">
           <ul class="flat-list right navigation-links">
             <li class="nav-link">
-              <h5>
+              <h5 @click="toggleMobileNav()">
                 <router-link :to="{ path: '/' }">HOME</router-link>
               </h5>
             </li>
             <li class="nav-link">
-              <h5>
+              <h5 @click="toggleMobileNav()">
                 <router-link :to="{ path: '/works' }">WORKS</router-link>
               </h5>
             </li>
             <li class="nav-link">
-              <h5>
+              <h5 @click="toggleMobileNav()">
                 <router-link :to="{ path: '/about' }">ABOUT</router-link>
               </h5>
             </li>
@@ -58,7 +58,9 @@ export class NavComponent extends Vue {
   public displayMobileNav: boolean = false;
 
   public toggleMobileNav() {
-    this.displayMobileNav = !this.displayMobileNav;
+    if (this.displayMobileNavButton) {
+      this.displayMobileNav = !this.displayMobileNav;
+    }
   }
 
   private getWindowWidth(e: Event) {

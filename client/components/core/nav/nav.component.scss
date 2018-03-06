@@ -2,14 +2,21 @@
   width: 100%;
   position: fixed;
   transition: background-color 2.5s ease-in;
+  z-index: 99;
 
   &.mobile-nav-list-container {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     top: 0;
     left: 0;
     right: 0;
+    z-index: 999;
+    opacity: 0.95;
   }
+
+  &.mobile-nav-list-container .container {
+    height: 100%;
+  }  
   
   .mobile-nav-icon-toggle {
     padding: 1rem;
