@@ -1,9 +1,38 @@
-@mixin h1-size {}
+$h1: 2.6667em;
+$h2: 2.1667em;
+$h3: 1.6667em;
+$h4: 1.1667em;
+$p: 1em;
 
-@mixin h2-size {}
+@mixin h1-size {
+  font-size: $h1*6/7;
+  @include grid-media($desktop-up) {
+    font-size: $h1;
+  }
+}
 
-@mixin h3-size {}
+@mixin h2-size {
+  font-size: $h2*6/7;
+  @include grid-media($desktop-up) {
+    font-size: $h2;
+  }
+}
 
-@mixin h-letter-spacing {}
+@mixin h3-size {
+  font-size: $h3*6/7;
+  @include grid-media($desktop-up) {
+    font-size: $h3;
+  }
+}
 
-@mixin body-default {}
+@mixin h4-size {
+  font-size: $h4;
+}
+
+@mixin h-letter-spacing {
+  letter-spacing: $p/15;
+}
+
+@mixin body-default {
+  font-size: $p;
+}

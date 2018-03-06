@@ -1,8 +1,23 @@
 h1,
 h2,
-h3 {
-  font-family: $arvo, monospace;
+h3,
+h4,
+h5,
+h6 {
   color: $dark-gray;
+  @include h-letter-spacing();
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $arvo, monospace;
+}
+
+h5,
+h6 {
+  @include body-default();
 }
 
 h1 {
@@ -17,22 +32,20 @@ h3 {
   @include h3-size();
 }
 
+h4 {
+  @include h4-size();
+}
+
+
 p,
-a,
-h4,
-h5,
-h6 {
+a {
   @include body-default();
   font-family: $raleway, sans-serif;
   word-wrap: break-word;
   color: $dark-gray;
-}
-
-p,
-a {
   line-height: 2;
 }
 
-p+p {
+p + p {
   text-indent: 0;
 }
