@@ -1,26 +1,40 @@
+@mixin text-border() {
+  text-shadow: -1px 0 $dark-gray, 0 1px $dark-gray, 1px 0 $dark-gray, 0 -1px $dark-gray;
+}
+
 .footer-component {
   width: 100%;
-
+  margin-top: 1rem;
+  
   .footer-section {
     @include grid-column(12);
     padding-top: 1rem;
     padding-bottom: 1rem;
-    
     @include grid-media($tablet-up) {
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;
     }
   }
-
-  .flat-list li {
-    padding-right: 1.5rem; 
+  .location-section {
+    text-align: center;
   }
-
+  .location-icon {
+    @include text-border();
+  }
+  .location-city {
+    font-family: $arvo;
+  }
+  .color-transition {
+    transition: color 1s ease-in;
+  }
+  .flat-list li {
+    padding-right: 1.5rem;
+  }
   .social-icon {
-    color: $white;
-
+    color: $teal;
+    @include text-border();
     i {
       font-size: 1.5rem;
     }
-  }  
+  }
 }

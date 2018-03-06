@@ -11,7 +11,7 @@ import router from './components/routes';
 @Component({
   template: `
     <div class="app-main" :style="{'background-color': backgroundColor}">
-      <nav-component v-if="visibleNav"></nav-component>
+      <nav-component v-bind:backgroundColor="backgroundColor" v-if="visibleNav"></nav-component>
       <router-view
         v-on:randomBackground="backgroundColorMatch"
         v-on:setVisibility="setVisibility"
