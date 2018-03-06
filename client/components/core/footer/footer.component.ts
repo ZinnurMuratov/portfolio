@@ -2,11 +2,19 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 
+import { colorVariables } from './../constants';
+
 @Component({
   template: `
     <footer
       class="footer-component">
       <div class="container">
+        <section class="location-section">
+          <h3 class="location-icon">
+            <i class="fa fa-map-marker color-transition" :style="{ 'color': iconColor }" aria-hidden="true"></i>
+          </h3>
+          <h5 class="location-city color-transition" :style="{ 'color': cityColor }">LOS ANGELES, CA</h5>
+        </section>
         <section class="footer-section">
           <ul class="flat-list center">
             <li v-for="link in socialLinks">
@@ -22,6 +30,8 @@ import { Prop } from 'vue-property-decorator';
 })
 
 export class FooterComponent extends Vue {
+  public iconColor: string = colorVariables.black;
+  public cityColor: string = colorVariables.black;
 
   public socialLinks: SocialLinks[] = [
     {
@@ -47,6 +57,13 @@ export class FooterComponent extends Vue {
       faIcon: 'fa fa-linkedin',
     },
   ];
+
+  private mounted() {
+    window.setTimeout(() => {
+      this.iconColor = colorVariables.teal;
+      this.cityColor = colorVariables.white;
+    }, 750);
+  }
 }
 
 export interface SocialLinks {
