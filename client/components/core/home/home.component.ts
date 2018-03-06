@@ -16,7 +16,7 @@ import { seo } from './../services';
             src="/images/brand/logo.png"
             srcset="/images/brand/logo@2x.png 1.25x" alt="Danny's IO Brand Logo">
           <h1 class="main-container-header color-transition" :style="{ 'color': headerColor }">DANNY ROMERO</h1>
-          <h4 class="color-transition" :style="{ 'color': headerColor }">&lt;Web Developer&gt;</h4>
+          <h4 class="color-transition" :style="{ 'color': headerColor }">&lt;web-developer&gt;</h4>
         </header>
       </main>
     </section>
